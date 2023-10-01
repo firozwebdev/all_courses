@@ -1,0 +1,6 @@
+Perform Encoding.
+- Step by step
+- Loop
+
+
+on insurance.csv
