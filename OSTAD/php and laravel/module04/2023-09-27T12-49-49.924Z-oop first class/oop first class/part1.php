@@ -2,8 +2,8 @@
 
 
 /*
-Class & Object
-1. Class allow developers to encapsulate related data and functions into a single entity.
+Class.php & Object
+1. Class.php allow developers to encapsulate related data and functions into a single entity.
 2. making it easier to manage and extend code
 3. An object is an instance of a class. You create an object of a class using the new keyword.
 */

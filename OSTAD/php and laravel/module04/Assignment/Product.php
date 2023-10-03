@@ -32,8 +32,9 @@ class Product
         echo "- ID: " . $this->id . "\n";
         echo "- Name: " . $this->name . "\n";
         echo "- Price: $" . $this->getFormattedPrice();
-    }
 
+    }
+git 
 
 }
 

@@ -40,7 +40,7 @@ MyClass::staticMethod();
 
 
 /*
-Accessing Static Properties Inside Class Methods
+Accessing Static Properties Inside Class.php Methods
 1.Within class methods, static properties and methods are accessed using the self keyword followed by the scope resolution operator
 */
 
