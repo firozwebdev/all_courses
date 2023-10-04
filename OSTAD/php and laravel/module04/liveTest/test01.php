@@ -60,7 +60,7 @@ private string $mark;
 // constructor
 public function __construct($name, $age,$mark)
 {
-    //parent::__construct();
+    //parent::__construct($name,$age);
     $this->name = $name;
     $this->age = $age;
     $this->mark = $mark;
@@ -71,7 +71,7 @@ public function __construct($name, $age,$mark)
 
 
 
-// method override )
+// method override
 
     public function introduce() {
 
