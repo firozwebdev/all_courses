@@ -34,7 +34,7 @@ class Product
         echo "- Price: $" . $this->getFormattedPrice();
 
     }
-git
+
 
 }
 
