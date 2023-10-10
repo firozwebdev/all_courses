@@ -1,0 +1,1 @@
+https://copyprogramming.com/howto/download-a-file-via-curl-with-cookies-using-php
