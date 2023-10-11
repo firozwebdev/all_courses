@@ -1,1 +1,3 @@
 https://copyprogramming.com/howto/download-a-file-via-curl-with-cookies-using-php
+
+https://www.youtube.com/watch?v=phoiFoOLUBc
