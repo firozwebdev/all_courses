@@ -1,18 +1,21 @@
 <?php
 
 session_start();
-if (isset($_POST["signup"])){
+if (isset($_POST["signup"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $data = [];
-        $data['email'] = $_POST["email"];
-        $data['role']  = $_POST['role'];
-        if($_POST['password'] == $_POST['check_password']){
-            $data['password']  = $_POST["password"];
-        }else{
+        $user = [];
+        $user['email'] = $_POST["email"];
+        $user['role'] = $_POST['role'];
+        if ($_POST['password'] == $_POST['check_password']) {
+            $user['password'] = $_POST["password"];
+        } else {
             echo "Invalid email or password.";
         }
 
-        print_r($data);
+        file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND);
+        $_SESSION['message'] = "User saved successfully";
+        header("Location: login.php");
+        exit();
 
         // Read user data from the file (users.json)
 //        $users = file("users.json", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -29,7 +32,7 @@ if (isset($_POST["signup"])){
     }
 }
 
-if (isset($_POST["login"])){
+if (isset($_POST["login"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data = [];
         $data['email'] = $_POST["email"];
@@ -48,6 +51,7 @@ if (isset($_POST["login"])){
 <head>
     <meta charset="utf-8">
     <title>Login and Registration Form in HTML | CodingNepal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -64,7 +68,7 @@ if (isset($_POST["login"])){
     <div class="form-container">
         <div class="slide-controls">
             <input type="radio" name="slide" id="login" checked>
-            <input type="radio" name="slide" id="signup" >
+            <input type="radio" name="slide" id="signup">
             <label for="login" class="slide login">Login</label>
             <label for="signup" class="slide signup">Signup</label>
             <div class="slider-tab"></div>
@@ -114,6 +118,8 @@ if (isset($_POST["login"])){
         </div>
     </div>
 </div>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 <script>
     const loginText = document.querySelector(".title-text .login");
     const loginForm = document.querySelector("form.login");
@@ -133,5 +139,18 @@ if (isset($_POST["login"])){
         return false;
     });
 </script>
+
+    <?php
+
+    if(isset($_SESSION['message'])){
+        echo "<script type=\"text/javascript\">toastr.success(\"{$_SESSION['message']}\")</script>";
+        //echo '<script type="text/javascript">toastr.success("{$_SESSION[\'message\']}")</script>';
+        unset($_SESSION['message']);
+    }
+
+
+    ?>
+
+
 </body>
 </html>
