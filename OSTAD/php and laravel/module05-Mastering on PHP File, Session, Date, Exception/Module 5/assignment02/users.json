@@ -12,3 +12,6 @@
 {"email":"test@gmail.com","role":"Editor","password":"123456"}
 {"email":"admin@gmail.com","role":"Choose a role...","password":"123456"}
 {"email":"admin@gmail.com","role":"Admin","password":"123456"}
+{"email":"admin","role":"Admin","password":"1"}
+{"email":"admin","role":"Admin","password":"1","confirm_password":"1"}
+{"email":"hello@gmail.com","role":"Editor","password":"1","confirm_password":"1"}

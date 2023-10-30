@@ -6,24 +6,31 @@ if (isset($_POST["signup"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $user = [];
+
         $user['email'] = $_POST["email"];
         $user['role'] = $_POST['role'];
-        if ($_POST['password'] === $_POST['confirm_password']) {
-            $user['password'] = $_POST["password"];
-            if(file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND)){
-                $_SESSION['user'] = $user;
-                $_SESSION['message'] = "User saved successfully";
-                $_SESSION['isLoggedIn'] = true;
-                header("Location: dashboard.php");
-                exit();
-            }else{
-                $_SESSION['message'] = "User not saved successfully";
-                header("Location: login.php");
-                exit();
+        $user['password'] = $_POST['password'];
+        $user['confirm_password'] = $_POST['confirm_password'];
+        if(empty($user['email']) || ($user['role'] == 'Choose a role...') || empty($user['password'])){
+            $_SESSION['message'] = "Please fill all fields properly !";
+        }else{
+            if ($user['password'] === $user['confirm_password']) {
+                if(file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND)){
+                    $_SESSION['user'] = $user;
+                    $_SESSION['message'] = "User saved successfully !";
+                    $_SESSION['isLoggedIn'] = true;
+                    header("Location: dashboard.php");
+                    exit();
+                }else{
+                    $_SESSION['message'] = "User not saved successfully";
+                    header("Location: login.php");
+                    exit();
+                }
+            } else {
+                $_SESSION['message'] = "Password not match !";
             }
-        } else {
-            $_SESSION['message'] = "Password not match";
         }
+
 
         //$savedUser = file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND);
 
