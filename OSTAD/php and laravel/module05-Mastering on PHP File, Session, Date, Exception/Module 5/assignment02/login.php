@@ -1,21 +1,34 @@
 <?php
-
+ob_start();
 session_start();
+
 if (isset($_POST["signup"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
         $user = [];
         $user['email'] = $_POST["email"];
         $user['role'] = $_POST['role'];
-        if ($_POST['password'] == $_POST['check_password']) {
+        if ($_POST['password'] === $_POST['confirm_password']) {
             $user['password'] = $_POST["password"];
+            if(file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND)){
+                $_SESSION['user'] = $user;
+                $_SESSION['message'] = "User saved successfully";
+                $_SESSION['isLoggedIn'] = true;
+                header("Location: dashboard.php");
+                exit();
+            }else{
+                $_SESSION['message'] = "User not saved successfully";
+                header("Location: login.php");
+                exit();
+            }
         } else {
-            echo "Invalid email or password.";
+            $_SESSION['message'] = "Password not match";
         }
 
-        file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND);
-        $_SESSION['message'] = "User saved successfully";
-        header("Location: login.php");
-        exit();
+        //$savedUser = file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND);
+
+
+
 
         // Read user data from the file (users.json)
 //        $users = file("users.json", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -108,7 +121,7 @@ if (isset($_POST["login"])) {
                     <input name="password" type="password" placeholder="Password" required>
                 </div>
                 <div class="field">
-                    <input name="check_password" type="password" placeholder="Confirm password" required>
+                    <input name="confirm_password" type="password" placeholder="Confirm password" required>
                 </div>
                 <div class="field btn">
                     <div class="btn-layer"></div>
