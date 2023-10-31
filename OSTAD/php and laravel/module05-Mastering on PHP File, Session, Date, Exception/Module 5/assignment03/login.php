@@ -25,6 +25,7 @@ if (isset($_POST["signup"])) {
                 if ($password === $confirm_password) {
                     $users[$email] = [
                         'username' => $username,
+                        'email' => $email,
                         'role' => '',
                         'password' => $password,
                     ];
