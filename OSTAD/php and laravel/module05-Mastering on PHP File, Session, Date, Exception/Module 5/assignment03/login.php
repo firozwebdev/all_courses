@@ -1,34 +1,60 @@
 <?php
 ob_start();
 session_start();
+$usersFile = 'users.json';
+$users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
+function saveUsers($users, $file)
+{
+    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
+}
 
 if (isset($_POST["signup"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $role = '';
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
 
-        $user = [];
-        $user['username'] = $_POST["username"];
-        $user['email'] = $_POST["email"];
-        $user['role'] ='';
-        if ($_POST['password'] === $_POST['confirm_password']) {
-            $user['password'] = $_POST["password"];
-            if(file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND)){
-                $_SESSION['user'] = $user;
-                $_SESSION['message'] = "User saved successfully";
-                $_SESSION['isLoggedIn'] = true;
-                header("Location: dashboard.php");
-                exit();
-            }else{
-                $_SESSION['message'] = "User not saved successfully";
-                header("Location: login.php");
-                exit();
-            }
+        if (empty($username || empty($email) || empty($password))) {
+            $_SESSION['message'] = "Please fill all fields properly !";
         } else {
-            $_SESSION['message'] = "Password not match";
+            if (isset($users[$email])) {
+                $_SESSION['message'] = "Email already exists !";
+            } else {
+                if ($password === $confirm_password) {
+                    $users[$email] = [
+                        'username' => $username,
+                        'role' => '',
+                        'password' => $password,
+                    ];
+                    saveUsers($users, $usersFile);
+                    $_SESSION['user'] = $users;
+                    $_SESSION['message'] = "User saved successfully !";
+                    $_SESSION['isLoggedIn'] = true;
+                    header("Location: dashboard.php");
+//                   if (file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND)) {
+//                      $_SESSION['user'] = $user;
+//                       $_SESSION['message'] = "User saved successfully !";
+//                       $_SESSION['isLoggedIn'] = true;
+//                      header("Location: dashboard.php");
+//
+//                } else {
+//                    $_SESSION['message'] = "User not saved successfully";
+//                    header("Location: login.php");
+//                    exit();
+//                }
+
+                } else {
+                    $_SESSION['message'] = "Password not match !";
+                }
+            }
+
         }
 
+    }
+}
         //$savedUser = file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND);
-
-
 
 
         // Read user data from the file (users.json)
@@ -43,8 +69,7 @@ if (isset($_POST["signup"])) {
 //            }
 //        }
 //        echo "Invalid email or password.";
-    }
-}
+
 
 if (isset($_POST["login"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -90,9 +115,6 @@ if (isset($_POST["login"])) {
         <div class="form-inner">
             <form action="#" class="login" method="POST">
                 <div class="field">
-                    <input name="username" type="text" placeholder="Username" required>
-                </div>
-                <div class="field">
                     <input name="email" type="text" placeholder="Email Address" required>
                 </div>
                 <div class="field">
@@ -116,14 +138,7 @@ if (isset($_POST["login"])) {
                 <div class="field">
                     <input name="email" type="text" placeholder="Email Address" required>
                 </div>
-<!--                <div class="field">-->
-<!--                    <select name="role" id="">-->
-<!--                        <option>Choose a role...</option>-->
-<!--                        <option>Admin</option>-->
-<!--                        <option>Editor</option>-->
-<!--                        <option>User</option>-->
-<!--                    </select>-->
-<!--                </div>-->
+
                 <div class="field">
                     <input name="password" type="password" placeholder="Password" required>
                 </div>
@@ -160,16 +175,16 @@ if (isset($_POST["login"])) {
     });
 </script>
 
-    <?php
+<?php
 
-    if(isset($_SESSION['message'])){
-        echo "<script type=\"text/javascript\">toastr.success(\"{$_SESSION['message']}\")</script>";
-        //echo '<script type="text/javascript">toastr.success("{$_SESSION[\'message\']}")</script>';
-        unset($_SESSION['message']);
-    }
+if (isset($_SESSION['message'])) {
+    echo "<script type=\"text/javascript\">toastr.success(\"{$_SESSION['message']}\")</script>";
+    //echo '<script type="text/javascript">toastr.success("{$_SESSION[\'message\']}")</script>';
+    unset($_SESSION['message']);
+}
 
 
-    ?>
+?>
 
 
 </body>
