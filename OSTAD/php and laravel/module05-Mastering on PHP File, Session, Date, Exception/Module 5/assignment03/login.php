@@ -30,7 +30,7 @@ if (isset($_POST["signup"])) {
                         'password' => $password,
                     ];
                     saveUsers($users, $usersFile);
-                    $_SESSION['user'] = $users;
+                    $_SESSION['user'] =  $users[$email];
                     $_SESSION['message'] = "User saved successfully !";
                     $_SESSION['isLoggedIn'] = true;
                     header("Location: dashboard.php");

@@ -1,13 +1,13 @@
 {
-    "sabuz@gmail.com": {
-        "username": "sabuz",
-        "email": "sabuz@gmail.com",
+    "admin@gmail.com": {
+        "username": "admin",
+        "email": "admin@gmail.com",
         "role": "",
         "password": "1"
     },
-    "firoz@gmail.com": {
+    "firoz@author.com": {
         "username": "firoz",
-        "email": "firoz@gmail.com",
+        "email": "firoz@author.com",
         "role": "",
         "password": "1"
     }
