@@ -120,7 +120,7 @@ if(isset($_GET['reference_email'])){
 <div class="wrapper">
     <div class="title-text">
         <div class="title login">
-            Users List
+           Assign Role To Current User
         </div>
 
     </div>

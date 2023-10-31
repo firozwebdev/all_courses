@@ -1,5 +1,4 @@
 <?php
-ob_start();
 session_start();
 $usersFile = 'users.json';
 $users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
@@ -30,21 +29,10 @@ if (isset($_POST["signup"])) {
                         'password' => password_hash($password, PASSWORD_DEFAULT),
                     ];
                     saveUsers($users, $usersFile);
-                    $_SESSION['user'] =  $users[$email];
+                    $_SESSION['user'] = $users[$email];
                     $_SESSION['message'] = "User saved successfully !";
                     $_SESSION['isLoggedIn'] = true;
                     header("Location: dashboard.php");
-//                   if (file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND)) {
-//                      $_SESSION['user'] = $user;
-//                       $_SESSION['message'] = "User saved successfully !";
-//                       $_SESSION['isLoggedIn'] = true;
-//                      header("Location: dashboard.php");
-//
-//                } else {
-//                    $_SESSION['message'] = "User not saved successfully";
-//                    header("Location: login.php");
-//                    exit();
-//                }
 
                 } else {
                     $_SESSION['message'] = "Password not match !";
@@ -55,21 +43,7 @@ if (isset($_POST["signup"])) {
 
     }
 }
-        //$savedUser = file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND);
 
-
-        // Read user data from the file (users.json)
-//        $users = file("users.json", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-//
-//        foreach ($users as $user) {
-//            $userData = json_decode($user, true);
-//            if ($userData["email"] === $email && password_verify($password, $userData["password"])) {
-//                $_SESSION["user"] = $userData;
-//                header("Location: dashboard.php");
-//                exit();
-//            }
-//        }
-//        echo "Invalid email or password.";
 
 
 if (isset($_POST["login"])) {
@@ -82,8 +56,30 @@ if (isset($_POST["login"])) {
             $_SESSION["user"] = $users[$email];
             $_SESSION['isLoggedIn'] = true;
             $_SESSION['message'] = "Login successfully !";
-            header("Location: dashboard.php");
-            exit();
+            $user =  $_SESSION['user'];
+            switch ($_SESSION["user"]['role']) {
+
+                case "Admin":
+                    $_SESSION['message'] = "Welcome Mr. ".$user['role'];
+                    header("Location: dashboard.php");
+                    exit();
+                    break;
+                case "Editor":
+                    $_SESSION['message'] = "Welcome Mr. ".$user['role'];
+                    header("Location: editor.php");
+                    exit();
+                    break;
+                case "User":
+                    $_SESSION['message'] = "Welcome Mr. ".$user['role'];
+                    header("Location: user.php");
+                    exit();
+                    break;
+                default:
+                    $_SESSION['message'] = "Credential not match !";
+            }
+
+        }else{
+            $_SESSION['message'] = "Credential not match !";
         }
     }
 }

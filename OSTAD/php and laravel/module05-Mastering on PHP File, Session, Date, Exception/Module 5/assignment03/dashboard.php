@@ -39,6 +39,7 @@ if (isset($_GET['email'])) {
 
         unset($users[$email]);
         saveUsers($users, $usersFile);
+        $_SESSION['message'] = "User deleted successfully !";
         header("Location: dashboard.php");
         exit();
     }
@@ -102,7 +103,7 @@ if (isset($_GET['email'])) {
 <div class="wrapper">
     <div class="title-text">
         <div class="title login">
-            Users List
+            Role Management
         </div>
 
     </div>
