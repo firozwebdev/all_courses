@@ -1,14 +1,20 @@
 {
     "admin@gmail.com": {
-        "username": "admin",
+        "username": "sabuz",
         "email": "admin@gmail.com",
         "role": "Admin",
-        "password": "$2y$10$JlwZ69C9EmFLALAZb2i5gO4TEiUPiIHOCFqXuYLlF3fKY68VNhv3."
+        "password": "$2y$10$rkqjP0Oh2U.SttKjTFyw\/.2Dua2eTDvuV6BoSNzoh1arGAw8VuReK"
+    },
+    "firoz@gmail.com": {
+        "username": "Firoz",
+        "email": "firoz@gmail.com",
+        "role": "Editor",
+        "password": "$2y$10$3YQGZcXk17d5DJl\/EKZckO2Sqb.ddb2sxJieh\/ImoLxaF\/PM6mluW"
     },
     "firoz@author.com": {
         "username": "firoz",
         "email": "firoz@author.com",
-        "role": "Editor",
-        "password": "$2y$10$oKx2942WDWPeOsHNDrwafeLDbIkinut0pfhY8gWlc6MwL6VcsOncS"
+        "role": "User",
+        "password": "$2y$10$FJ1arX.BdkRqYekzdUnQgO7.KuF1oOXpLbYR0JT9FVjjuk8TBYBOK"
     }
 }

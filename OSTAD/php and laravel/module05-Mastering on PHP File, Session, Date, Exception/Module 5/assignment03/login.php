@@ -7,6 +7,33 @@ function saveUsers($users, $file)
     file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT));
 }
 
+function goPage($username,$role)
+{
+    echo $role;
+    switch ($role) {
+
+        case "Admin":
+            $_SESSION['message'] = "Welcome Mr. " . $username;
+            header("Location: dashboard.php");
+            exit();
+            break;
+        case "Editor":
+            $_SESSION['message'] = "Welcome Mr. " . $username;
+            header("Location: editor.php");
+            exit();
+            break;
+        case "User" :
+            $_SESSION['message'] = "Welcome Mr. " . $username;
+            header("Location: user.php");
+            exit();
+            break;
+        default:
+            header("Location: user.php");
+            exit();
+
+    }
+}
+
 if (isset($_POST["signup"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["username"];
@@ -32,7 +59,9 @@ if (isset($_POST["signup"])) {
                     $_SESSION['user'] = $users[$email];
                     $_SESSION['message'] = "User saved successfully !";
                     $_SESSION['isLoggedIn'] = true;
-                    header("Location: dashboard.php");
+                    $username = $users[$email]['username'];
+                    $role = $users[$email]['role'];
+                    goPage($username, $role);
 
                 } else {
                     $_SESSION['message'] = "Password not match !";
@@ -45,42 +74,34 @@ if (isset($_POST["signup"])) {
 }
 
 
-
 if (isset($_POST["login"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $email = $_POST["email"];
         $password = $_POST["password"];
+//        echo '<pre>';
+//        print_r($users[$email]);
+//        die();
 
-        if ($users[$email]['email'] === $email && password_verify($password, $users[$email]['password'])) {
-            $_SESSION["user"] = $users[$email];
-            $_SESSION['isLoggedIn'] = true;
-            $_SESSION['message'] = "Login successfully !";
-            $user =  $_SESSION['user'];
-            switch ($_SESSION["user"]['role']) {
+        if (isset($users[$email]['email'])) {
 
-                case "Admin":
-                    $_SESSION['message'] = "Welcome Mr. ".$user['role'];
-                    header("Location: dashboard.php");
-                    exit();
-                    break;
-                case "Editor":
-                    $_SESSION['message'] = "Welcome Mr. ".$user['role'];
-                    header("Location: editor.php");
-                    exit();
-                    break;
-                case "User":
-                    $_SESSION['message'] = "Welcome Mr. ".$user['role'];
-                    header("Location: user.php");
-                    exit();
-                    break;
-                default:
-                    $_SESSION['message'] = "Credential not match !";
+            if ($users[$email]['email'] === $email && password_verify($password, $users[$email]['password'])) {
+
+                $_SESSION["user"] = $users[$email];
+                $_SESSION['isLoggedIn'] = true;
+                //$_SESSION['message'] = "Login successfully !";
+                $username = $users[$email]['username'];
+                $role = $users[$email]['role'];
+                goPage($username, $role);
+
+            } else {
+                $_SESSION['message'] = "Credential not match !";
             }
 
-        }else{
-            $_SESSION['message'] = "Credential not match !";
+        } else {
+            $_SESSION['message'] = "Email not found !";
         }
+
     }
 }
 
