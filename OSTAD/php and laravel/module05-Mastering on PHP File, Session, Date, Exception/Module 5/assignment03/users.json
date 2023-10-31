@@ -2,13 +2,13 @@
     "admin@gmail.com": {
         "username": "admin",
         "email": "admin@gmail.com",
-        "role": "",
-        "password": "1"
+        "role": "Admin",
+        "password": "$2y$10$JlwZ69C9EmFLALAZb2i5gO4TEiUPiIHOCFqXuYLlF3fKY68VNhv3."
     },
     "firoz@author.com": {
         "username": "firoz",
         "email": "firoz@author.com",
-        "role": "",
-        "password": "1"
+        "role": "Admin",
+        "password": "$2y$10$oKx2942WDWPeOsHNDrwafeLDbIkinut0pfhY8gWlc6MwL6VcsOncS"
     }
 }

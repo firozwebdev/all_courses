@@ -27,7 +27,7 @@ if (isset($_POST["signup"])) {
                         'username' => $username,
                         'email' => $email,
                         'role' => '',
-                        'password' => $password,
+                        'password' => password_hash($password, PASSWORD_DEFAULT),
                     ];
                     saveUsers($users, $usersFile);
                     $_SESSION['user'] =  $users[$email];
@@ -74,11 +74,17 @@ if (isset($_POST["signup"])) {
 
 if (isset($_POST["login"])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $data = [];
-        $data['email'] = $_POST["email"];
-        $data['password'] = $_POST["password"];
 
-        print_r($data);
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        if ($users[$email]['email'] === $email && password_verify($password, $users[$email]['password'])) {
+            $_SESSION["user"] = $users[$email];
+            $_SESSION['isLoggedIn'] = true;
+            $_SESSION['message'] = "Login successfully !";
+            header("Location: dashboard.php");
+            exit();
+        }
     }
 }
 
@@ -121,16 +127,16 @@ if (isset($_POST["login"])) {
                 <div class="field">
                     <input name="password" type="password" placeholder="Password" required>
                 </div>
-                <div class="pass-link">
-                    <a href="#">Forgot password?</a>
-                </div>
+<!--                <div class="pass-link">-->
+<!--                    <a href="#">Forgot password?</a>-->
+<!--                </div>-->
                 <div class="field btn">
                     <div class="btn-layer"></div>
                     <input name="login" type="submit" value="Login">
                 </div>
-                <div class="signup-link">
-                    Not a member? <a href="">Signup now</a>
-                </div>
+<!--                <div class="signup-link">-->
+<!--                    Not a member? <a href="">Signup now</a>-->
+<!--                </div>-->
             </form>
             <form action="#" class="signup" method="POST">
                 <div class="field">

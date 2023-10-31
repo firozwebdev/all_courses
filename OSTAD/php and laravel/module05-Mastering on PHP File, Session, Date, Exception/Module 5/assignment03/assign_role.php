@@ -15,10 +15,11 @@ $users = json_decode(file_get_contents($usersFile),true);
 
 if(isset($_POST['add_role'])){
     $newRole = $_POST['role'];
+    $email = $_POST['email'];
     if($newRole == 'Choose a role...'){
         $_SESSION['message'] = "Please add a role properly !";
     }else{
-        $email = $_SESSION['user']['email'];
+        //$email = $_SESSION['user']['email'];
         if(!$users[$email]){
             $_SESSION['message'] = "Email not found !";
         }else{
@@ -26,6 +27,8 @@ if(isset($_POST['add_role'])){
                 $users[$email]['role'] = $newRole;
                 saveUsers($users,$usersFile);
                 $_SESSION['message'] = "Role assigned successfully !";
+                header("Location: dashboard.php");
+                exit();
             }
         }
 
@@ -126,6 +129,7 @@ if(isset($_GET['reference_email'])){
 
         <div class="form-inner">
             <form action="#" class="signup" method="POST">
+                <input type="hidden" name="email" value="<?php echo $email; ?>">
                 <div class="field">
                     <select name="role" id="">
                         <option>Choose a role...</option>
@@ -135,9 +139,13 @@ if(isset($_GET['reference_email'])){
                     </select>
                 </div>
                 <div class="field btn">
+
                     <div class="btn-layer"></div>
                     <input type="submit" name="add_role" value="Add Role">
-                   
+
+                </div>
+                <div class="signup-link">
+                    <a href="dashboard.php">Back</a>
                 </div>
             </form>
         </div>

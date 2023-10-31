@@ -47,8 +47,6 @@ if (isset($_GET['email'])) {
 
 
 
-
-
 //echo '<pre>';
 //
 //die();
@@ -66,7 +64,8 @@ if (isset($_GET['email'])) {
 ////        echo '<pre>';
 ////        print_r($usersData);
 
-
+//echo '<pre>';
+//print_r($_SESSION['user']);
 /*
  * Array
 (
@@ -117,34 +116,40 @@ if (isset($_GET['email'])) {
                     <th>Role</th>
                     <th>Action</th>
                 </tr>
-                <?php foreach ($users as $user) {?>
-                    <tr>
-                        <td><?php echo $user['username']; ?></td>
-                        <td><?php echo $user['email']; ?></td>
-                        <?php $user['role'] = $user['role'] ?? ''; ?>
-                        <td><?php echo $user['role']  ?></td>
-                        <td><a href="assign_role.php?reference_email=<?php echo $user['email']; ?>">Assign Role</a> | <a href="dashboard.php?email=<?php echo $user['email']; ?>">Delete</a></td>
-                    </tr>
-                <?php } ?>
+                <?php if($_SESSION['user']['role'] == 'Admin'){
+                    foreach ($users as $user) {?>
+                        <tr>
+                            <td><?php echo $user['username']; ?></td>
+                            <td><?php echo $user['email']; ?></td>
+                            <?php $user['role'] = $user['role'] ?? ''; ?>
+                            <td><?php echo $user['role']  ?></td>
+                            <td><a href="assign_role.php?reference_email=<?php echo $user['email']; ?>">Assign Role</a> | <a href="dashboard.php?email=<?php echo $user['email']; ?>">Delete</a></td>
+
+                        </tr>
+                    <?php }
+                }else{
+                foreach ($users as $user) {?>
+                <tr>
+                    <td><?php echo $user['username']; ?></td>
+                    <td><?php echo $user['email']; ?></td>
+                    <?php $user['role'] = $user['role'] ?? ''; ?>
+                    <td><?php echo $user['role']  ?></td>
+                </tr>
+                <?php }
+                } ?>
+
             </table>
 
 
         </div>
         <div class="form-inner">
-            <form action="#" class="signup" method="POST">
-                <div class="field">
-                    <select name="role" id="">
-                        <option>Choose a role...</option>
-                        <option>Admin</option>
-                        <option>Editor</option>
-                        <option>User</option>
-                    </select>
-                </div>
+
+
                 <div class="field btn">
                     <div class="btn-layer"></div>
-                    <input type="submit" name="add_role" value="Add Role">
+                    <a href="logout.php">Logout</a>
                 </div>
-            </form>
+
         </div>
     </div>
 </div>
