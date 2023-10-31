@@ -19,15 +19,15 @@ if(isset($_POST['add_role'])){
         $_SESSION['message'] = "Please add a role properly !";
     }else{
         $email = $_SESSION['user']['email'];
-       if(!$users[$email]){
-           $_SESSION['message'] = "Email not found !";
-       }else{
-           if(isset($users[$email])){
-               $users[$email]['role'] = $newRole;
-               saveUsers($users,$usersFile);
-               $_SESSION['message'] = "Role assigned successfully !";
-           }
-       }
+        if(!$users[$email]){
+            $_SESSION['message'] = "Email not found !";
+        }else{
+            if(isset($users[$email])){
+                $users[$email]['role'] = $newRole;
+                saveUsers($users,$usersFile);
+                $_SESSION['message'] = "Role assigned successfully !";
+            }
+        }
 
 
     }
@@ -45,7 +45,21 @@ if (isset($_GET['email'])) {
 
 }
 
+if(isset($_GET['reference_email'])){
+    $email =  $_GET['reference_email'];
+    echo $email;
+    if(isset($users[$email])){
 
+//        echo '<pre>';
+//        print_r($users[$email]);
+//        die();
+
+//        saveUsers($users,$usersFile);
+//        header("Location: dashboard.php");
+//        exit();
+    }
+
+}
 
 
 
@@ -109,27 +123,7 @@ if (isset($_GET['email'])) {
     </div>
     <div class="form-container">
 
-        <div class="form-inner">
-            <table border="1">
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Action</th>
-                </tr>
-                <?php foreach ($users as $user) {?>
-                    <tr>
-                        <td><?php echo $user['username']; ?></td>
-                        <td><?php echo $user['email']; ?></td>
-                        <?php $user['role'] = $user['role'] ?? ''; ?>
-                        <td><?php echo $user['role']  ?></td>
-                        <td><a href="assign_role.php?reference_email=<?php echo $user['email']; ?>">Assign Role</a> | <a href="dashboard.php?email=<?php echo $user['email']; ?>">Delete</a></td>
-                    </tr>
-                <?php } ?>
-            </table>
 
-
-        </div>
         <div class="form-inner">
             <form action="#" class="signup" method="POST">
                 <div class="field">
@@ -143,6 +137,7 @@ if (isset($_GET['email'])) {
                 <div class="field btn">
                     <div class="btn-layer"></div>
                     <input type="submit" name="add_role" value="Add Role">
+                   
                 </div>
             </form>
         </div>
