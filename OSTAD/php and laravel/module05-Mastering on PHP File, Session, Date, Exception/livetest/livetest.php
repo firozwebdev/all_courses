@@ -37,7 +37,9 @@ $file = '{{file_path}}';
 ?>
  */
 
-
+/*
+ * Task - 01
+ */
 $file = 'file.txt'; // Replace 'path/to/your/file.txt' with the actual file path
 
 // Open the file
@@ -58,7 +60,7 @@ if ($handle) {
 }
 
 /*
- * Task 2
+ * Task - 02
  */
 
 
