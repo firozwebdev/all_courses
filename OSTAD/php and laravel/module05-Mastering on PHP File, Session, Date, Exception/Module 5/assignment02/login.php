@@ -15,7 +15,7 @@ if (isset($_POST["signup"])) {
             $_SESSION['message'] = "Please fill all fields properly !";
         }else{
             if ($user['password'] === $user['confirm_password']) {
-                if(file_put_contents("users.json", json_encode($user) . PHP_EOL, FILE_APPEND)){
+                if(file_put_contents("users.json", json_encode($user,JSON_PRETTY_PRINT) . PHP_EOL, FILE_APPEND)){
                     $_SESSION['user'] = $user;
                     $_SESSION['message'] = "User saved successfully !";
                     $_SESSION['isLoggedIn'] = true;
