@@ -1,0 +1,3 @@
+Check class video last 10 minutes. 
+*Create Table > product , sales , Customer > using vlookup > add price column > using sumproduct & calculation Revenue
+*Create calculative column >>  user name,domain name, full address, full name,area code
