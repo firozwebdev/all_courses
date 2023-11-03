@@ -26,7 +26,7 @@ function calculateFinalPrice($originalPrice, $discountPercentage)
 }
 
 // Example usage
-$input = fgets(STDIN);
+$input = fgets(STDIN); //taking data from input or console...
 $input = explode(" ", $input);
 
 $originalPrice = $input[0];
