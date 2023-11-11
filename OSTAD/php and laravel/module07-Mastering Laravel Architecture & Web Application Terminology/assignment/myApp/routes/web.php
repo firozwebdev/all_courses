@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-use App\Http\Controllers\UserController;
+//use App\Http\Controllers\UserController;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
 
-Route::get('/',[UserController::class,'index']);
+Route::get('/',[App\Http\Controllers\UserController::class,'index']);
+Route::get('/about',[App\Http\Controllers\AboutController::class,'index']);
