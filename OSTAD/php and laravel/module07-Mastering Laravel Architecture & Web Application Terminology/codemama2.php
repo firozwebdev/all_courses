@@ -6,6 +6,7 @@ function isRotation($str1, $str2) {
         return false;
     }
 
+
     // Concatenate str1 with itself and check if str2 is a substring
     $concatenatedStr1 = $str1 . $str1;
 
