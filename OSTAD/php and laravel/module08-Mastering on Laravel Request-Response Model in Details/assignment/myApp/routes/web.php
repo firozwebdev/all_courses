@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +12,32 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//use App\Http\Controllers\UserController;
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
-Route::get('/',[App\Http\Controllers\UserController::class,'index']);
-Route::get('/about',[App\Http\Controllers\AboutController::class,'index']);
+
+Route::post('/form-submit', function (Request $request) {
+
+    $email = $request->input('email');
+
+
+    if ($email) {
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Form submitted successfully.',
+            'email' => $email,
+        ]);
+    } else {
+
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Form submission failed.',
+        ]);
+    }
+});
+
+Route::get('/user-agent', function (Request $request) {
+
+    $userAgent = $request->header('User-Agent');
+
+    return $userAgent;
+});
