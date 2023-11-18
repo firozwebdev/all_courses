@@ -12,7 +12,9 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/',function (){
+    return "hello world";
+});
 
 Route::post('/form-submit', function (Request $request) {
 
