@@ -1,0 +1,23 @@
+import pandas as pd
+import numpy as np
+data = {'A': [21, np.nan, 22, 4,np.nan],
+        'B': [31,32,33,34,35],
+        'C': [np.nan,np.nan,np.nan,np.nan,np.nan],
+        'D': [46,47,np.nan,48,49]
+       }
+
+df = pd.DataFrame(data)
+df
+
+def count_nan_values(data_frame):
+    return data_frame.isnull().sum().sum()
+count_nan_values(df)
+
+df_forward_fill = df.fillna(method='ffill')
+df_forward_fill
+
+df_backward_fill = df.fillna(method='bfill')
+df_backward_fill
+
+df_zero_fill = df.fillna(0)
+df_zero_fill
