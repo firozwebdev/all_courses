@@ -1,3 +1,9 @@
+# Make the following Dataframe by using pandas. 
+Write the functions to see the how many NaN 
+values are in the entire Dataframe? 
+Clean the NaN values using Forward fill, 
+Backward fill, ‘0’ Fill
+
 import pandas as pd
 import numpy as np
 data = {'A': [21, np.nan, 22, 4,np.nan],
