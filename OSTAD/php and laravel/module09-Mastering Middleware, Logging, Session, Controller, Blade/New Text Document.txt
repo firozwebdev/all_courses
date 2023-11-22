@@ -1,0 +1,23 @@
+Laravel Blade directive list
+
+1. `@if`, `@elseif`, `@else`, `@endif`
+2. `@unless`
+3. `@auth`, `@guest`
+4. `@production`, `@env`
+5. `@hasSection`, `@section`, `@endsection`, `@yield`
+6. `@show`, `@parent`
+7. `@switch`, `@case`, `@break`, `@default`, `@endswitch`
+8. `@for`, `@foreach`, `@forelse`, `@empty`, `@while`, `@endfor`, `@endforeach`, `@endforelse`, `@endwhile`
+9. `@continue`, `@break`
+10. `$loop` variable
+11. `@class`, `@style`
+12. `@checked`, `@selected`, `@disabled`, `@readonly`, `@required`
+13. `@include`, `@includeIf`, `@includeWhen`, `@includeUnless`, `@includeFirst`
+14. `@each`
+15. `@php`, `@endphp`
+16. Blade comments: `{{-- --}}`
+17. `@json`
+18. `@csrf`, `@method`
+19. `@extends`, `@stack`, `@push`, `@prepend`
+20. `@error`
+21. `@once`, `@endonce`
