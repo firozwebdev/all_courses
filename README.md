@@ -6,7 +6,7 @@ A brief description of what this project does and who it's for
 
 
 ## Usage/Examples
-
+## জাভাস্ক্রিপ্ট ফাংশন 
 ```javascript
 function(){
     console.log("hello world");
