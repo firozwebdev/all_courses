@@ -2,6 +2,8 @@
 # Project Title
 
 A brief description of what this project does and who it's for
+লারাভেল রিকুয়েস্ট ভ্যালিডেশন
+
 
 ```php
 
