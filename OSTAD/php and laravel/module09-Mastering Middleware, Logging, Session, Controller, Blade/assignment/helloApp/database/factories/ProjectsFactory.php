@@ -20,14 +20,14 @@ class ProjectsFactory extends Factory
             'name' => fake()->name(),
             'image' => fake()->randomElement(
                 [
-                    'portfolio-1',
-                    'portfolio-2',
-                    'portfolio-3',
-                    'portfolio-4',
-                    'portfolio-5',
-                    'portfolio-6',
-                    'portfolio-7',
-                    'portfolio-8',
+                    'portfolio-1.jpg',
+                    'portfolio-2.jpg',
+                    'portfolio-3.jpg',
+                    'portfolio-4.jpg',
+                    'portfolio-5.jpg',
+                    'portfolio-6.jpg',
+                    'portfolio-7.jpg',
+                    'portfolio-8.jpg',
 
                 ]
             ),
