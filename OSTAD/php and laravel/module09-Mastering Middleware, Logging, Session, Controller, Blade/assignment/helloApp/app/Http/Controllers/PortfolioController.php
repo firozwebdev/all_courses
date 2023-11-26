@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Projects;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -14,7 +15,11 @@ class PortfolioController extends Controller
     }
 
     public function projects(){
-        return view('pages.projects');
+        $projects = Projects::all();
+        $frontend = $projects->where('category','Frontend Developer')->all();
+        $backend = $projects->where('category','Backend Developer')->all();
+        $fullstack = $projects->where('category','Full Stack Developer')->all();
+        return view('pages.projects',compact('frontend','backend','fullstack'));
     }
 
     public function contact(){
