@@ -22,36 +22,66 @@
             </div>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-Frontend">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('assets/img/portfolio/portfolio-1.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{ asset('assets/img/portfolio/portfolio-1.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                @if($frontend)
+                    @foreach($frontend as $project)
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-Frontend">
+                        <div class="portfolio-wrap">
+                            <img src="{{ asset('assets/img/portfolio/'.$project->image) }}" class="img-fluid" alt="">
+                            <div class="portfolio-links">
+                                <a href="{{ asset('assets/img/portfolio/'.$project->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @endforeach
+                @endif
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-Backend">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('assets/img/portfolio/portfolio-2.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{ asset('assets/img/portfolio/portfolio-2.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-                </div>
+                    @if($backend)
+                        @foreach($backend as $project)
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-Backend">
+                                <div class="portfolio-wrap">
+                                    <img src="{{ asset('assets/img/portfolio/'.$project->image) }}" class="img-fluid" alt="">
+                                    <div class="portfolio-links">
+                                        <a href="{{ asset('assets/img/portfolio/'.$project->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                    @if($backend)
+                        @foreach($fullstack as $project)
+                            <div class="col-lg-4 col-md-6 portfolio-item filter-FullStack">
+                                <div class="portfolio-wrap">
+                                    <img src="{{ asset('assets/img/portfolio/'.$project->image) }}" class="img-fluid" alt="">
+                                    <div class="portfolio-links">
+                                        <a href="{{ asset('assets/img/portfolio/'.$project->image) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                        <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-FullStack">
-                    <div class="portfolio-wrap">
-                        <img src="{{ asset('assets/img/portfolio/portfolio-3.jpg') }}" class="img-fluid" alt="">
-                        <div class="portfolio-links">
-                            <a href="{{ asset('assets/img/portfolio/portfolio-3.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-Backend">--}}
+{{--                    <div class="portfolio-wrap">--}}
+{{--                        <img src="{{ asset('assets/img/portfolio/portfolio-2.jpg') }}" class="img-fluid" alt="">--}}
+{{--                        <div class="portfolio-links">--}}
+{{--                            <a href="{{ asset('assets/img/portfolio/portfolio-2.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>--}}
+{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
+{{--                <div class="col-lg-4 col-md-6 portfolio-item filter-FullStack">--}}
+{{--                    <div class="portfolio-wrap">--}}
+{{--                        <img src="{{ asset('assets/img/portfolio/portfolio-3.jpg') }}" class="img-fluid" alt="">--}}
+{{--                        <div class="portfolio-links">--}}
+{{--                            <a href="{{ asset('assets/img/portfolio/portfolio-3.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>--}}
+{{--                            <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
 
