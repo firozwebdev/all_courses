@@ -75,6 +75,8 @@ if (isset($_POST["signup"])) {
 
 
 if (isset($_POST["login"])) {
+    echo "hello";
+    die();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $email = $_POST["email"];
@@ -155,7 +157,7 @@ if (isset($_POST["login"])) {
 <!--                    Not a member? <a href="">Signup now</a>-->
 <!--                </div>-->
             </form>
-            <form action="#" class="signup" method="POST">
+            <form action="login.php" class="signup" method="POST">
                 <div class="field">
                     <input name="username" type="text" placeholder="Username" required>
                 </div>
