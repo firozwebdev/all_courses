@@ -1,0 +1,17 @@
+Yes , there is a outlier in this series. The value 130 is considered an outlier in this series.
+
+
+First quartile:
+Q1 =  (17+48)/2 = 32.5
+Third quartile:
+Q3 = (65+72)/2 = 68.5
+Interquartile Range:
+IQR = Q3−Q1=68.5−32.5=36
+
+Lower Limit: Q1-1.5*IQR = 32.5-1.5*36 = -24.5
+Since it's not possible to have a negative value as a lower limit, we consider 0 as the lower limit for this case.
+
+Upper Limit: Q3+1.5*IQR = 68.5 + 1.5*36 = 125.5
+
+Any value below the lower limit or above the upper limit is considered an outlier.
+In this case, 130 is above the upper limit, so it is considered an outlier.
