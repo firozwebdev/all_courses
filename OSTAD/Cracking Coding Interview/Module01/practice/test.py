@@ -1,7 +1,7 @@
 def sum_of_min_max(nums):
     max_n = nums[0]
     min_n = nums[0]
-    
+
     for i in range(len(nums)):
         if nums[i] > max_n:
             max_n = nums[i]
