@@ -1,6 +1,6 @@
 <?php
 /*
-task 01
+task 01 : Given an integer ‘n’, write a function to calculate the factorial of a given non-negative integer 'n'.
 */
 
 function calculateFactorial($n){
