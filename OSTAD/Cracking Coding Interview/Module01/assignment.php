@@ -3,14 +3,15 @@
 task 01 : Given an integer ‘n’, write a function to calculate the factorial of a given non-negative integer 'n'.
 */
 
-function calculateFactorial($n){
+function calculateFactorial($n)
+{
     $result = 1;
-    if($n < 0){
+    if ($n < 0) {
         echo "Error: Negative number not accepted ";
-    }else if($n ==1 || $n == 0){
+    } else if ($n == 1 || $n == 0) {
         return 1;
-    }else{
-        for($i=2;$i <= $n;$i++){
+    } else {
+        for ($i = 2; $i <= $n; $i++) {
             $result *= $i;
         }
     }
@@ -28,7 +29,8 @@ $factorial = calculateFactorial($number);
 /*
  * Task 02 : A function to calculate the sum of all natural numbers between ‘a’ to  'b'.
  */
-function calculateSum(int $a, int $b): int {
+function calculateSum(int $a, int $b): int
+{
     // Ensure that $a is less than or equal to $b
     if ($a > $b) {
         // Swap $a and $b if $a is greater than $b
