@@ -1,0 +1,12 @@
+Overview
+You've been tasked with designing a simple database system for a cloud kitchen.  The application enables clients to make their orders through the app without calling or going to the restaurant. With the ability to see menu items, They can order one or multiple items from the menu. The cloud kitchen wants to keep track of its orders. The menu items will have a name, price, a one-line description and multiple photos.
+Requirement
+The cloud kitchen wants to provide its menu, keep track of its orders, and manage customers from a web application. Users should create an account and log into the system to place orders. They can order multiple items together. Each item can be ordered in different quantities. Kitchen will track the status of orders as “new”, “in-progress”, and “completed”. 
+
+Tasks
+Draw an Entity-Relationship (ER) diagram, illustrating the relationship between these entities. (Image of export/screenshot of the diagram)
+Design a relational database (SQL for creating tables) based on the ER diagram you just created. Make sure your database schema indicates the primary and foreign keys. The design should comply with the third normal form of Database Normalization.
+Write SQL queries for the below use cases:
+Display a list of 20 latest available menu items. 
+Retrieve a list of all incomplete orders of today, in oldest to newest order.
+Delete all complete orders that have been placed before 15 days.
