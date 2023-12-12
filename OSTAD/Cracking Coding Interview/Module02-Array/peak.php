@@ -30,5 +30,28 @@ function testPeak($arr){
 
 }
 
-$output = testPeak([5,1,4,4]);
+function optimizedPeakMethod($arr){
+    $n = count($arr);
+    $leftMax[0] = $arr[0];
+    for($i=1;$i<$n;$i++){
+        $leftMax[$i] = max($leftMax[$i-1],$leftMax[$i-1]);
+
+    }
+
+    $rightMin[$n-1] = $arr[$n-1];
+    for($i = $n-2; $i>=0; $i--){
+        $rightMin[$i] = min($rightMin[$i+1],$arr[$i+1]);
+    }
+
+    for($i = 1;$i<=$n-1;$i++){
+        if($arr[$i] > $leftMax[$i] && $arr[$i] < $rightMin[$i]){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+
+
+$output = optimizedPeakMethod([5,1,6,7,9,8]);
 echo $output;
