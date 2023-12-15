@@ -1,3 +1,8 @@
+/*
+ES6 practice session
+
+*/
+
 function greet(name) {
   //console.log(`hello ${name}`);
 }
