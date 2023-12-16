@@ -1,4 +1,4 @@
-function addBinary(a, b) {
+const addBinary = (a, b) => {
   let i = a.length - 1;
   let j = b.length - 1;
   let carry = 0;
@@ -15,7 +15,6 @@ function addBinary(a, b) {
     result = carry + result;
   }
   return result;
-}
+};
 
-const getAddBinary = addBinary("1001", "101");
-console.log(getAddBinary);
+console.log(addBinary("100000", "101111"));
