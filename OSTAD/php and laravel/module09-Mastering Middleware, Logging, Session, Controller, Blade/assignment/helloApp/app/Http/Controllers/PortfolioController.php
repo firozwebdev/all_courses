@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Projects;
 use Illuminate\Http\Request;
-
+use DB;
 class PortfolioController extends Controller
 {
     public function index(){
+        $products = DB::table('products')
+                        ->select('category', DB::raw('COUNT(*) as product_count'))
+                        ->groupBy('category')
+                        ->having('product_count', '>', 5)
+                        ->get();
+
+        return $products;
         return view('layout');
     }
     public function home(){
