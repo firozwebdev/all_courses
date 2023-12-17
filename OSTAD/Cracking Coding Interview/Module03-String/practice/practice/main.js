@@ -17,4 +17,4 @@ const addBinary = (a, b) => {
   return result;
 };
 
-console.log(addBinary("100000", "101111"));
+console.log(addBinary("1000", "101111"));
