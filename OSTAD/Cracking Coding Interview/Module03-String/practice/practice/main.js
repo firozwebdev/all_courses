@@ -1,3 +1,4 @@
+// find the sum of two binary numbers
 const addBinary = (a, b) => {
   let i = a.length - 1;
   let j = b.length - 1;
@@ -34,6 +35,10 @@ function findNumberInString(intputSting) {
 const getfindNumberInString = findNumberInString("4ell25sd6f8");
 //console.log(getfindNumberInString);
 
+/*
+given  two string 'haystack' and 'needle' , find the number  of all occurences of needle
+
+*/
 const findNeedle = (haystack, needle) => {
   let indices = [];
   for (let i = 0; i <= haystack.length - needle.length; i++) {
