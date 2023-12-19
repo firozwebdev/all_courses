@@ -67,7 +67,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($request->id);
         if($request->quantity > 0){
-            if($product->quantity > $request->quantity){
+            if($product->quantity >= $request->quantity){
                 $product->decrement('quantity');
                 $product->save();
                 return redirect()->route('products.index')->with('message', 'Product sold successfully.');

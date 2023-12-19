@@ -19,7 +19,7 @@
 
 <div class="container pt-4 pb-4">
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-        <a class="navbar-brand" href="#">HTML CRUD Template</a>
+        <a class="navbar-brand" href="{{ route('products.index') }}">All Product</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,7 +30,7 @@
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="create.html">Create</a>
+                    <a class="nav-link" href="{{route('products.create')}}">Create</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">FAQ</a>
@@ -63,6 +63,7 @@
 </footer>
 
 
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="{{ asset('assets/js/jquery-3.3.1.slim.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>
@@ -70,16 +71,13 @@
 
 <script>
 
-    <?php
 
-    if (isset($_SESSION['message'])) {
-        echo "<script type=\"text/javascript\">toastr.success(\"{$_SESSION['message']}\")</script>";
-        //echo '<script type="text/javascript">toastr.success("{$_SESSION[\'message\']}")</script>';
-        unset($_SESSION['message']);
-    }
+{{--    @if(Session::has('message'))--}}
+{{--        toastr.success("{{ Session::get('message') }}")--}}
+
+{{--    @endif--}}
 
 
-    ?>
 </script>
 </body>
 </html>
