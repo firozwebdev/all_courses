@@ -75,7 +75,7 @@ class ProductController extends Controller
                 return redirect()->back()->with('message', 'Sorry ! Required Product is not available.');
             }
         }else{
-            return redirect()->back()->with('message', 'Please Select At lease one product.');
+            return redirect()->back()->with('message', 'Please Select At least one product.');
         }
 
 
