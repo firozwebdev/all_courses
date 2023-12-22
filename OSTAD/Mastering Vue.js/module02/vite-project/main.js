@@ -70,4 +70,16 @@ const person = {
 };
 
 const { fname, ...rest } = person;
-console.log(fname, rest);
+//console.log(fname, rest);
+
+//console.log(Boolean(0));
+
+var Storm = function () {};
+Storm.prototype.precip = "rain";
+
+var WinterStorm = function () {};
+WinterStorm.prototype = new Storm();
+WinterStorm.prototype.precip = "snow";
+
+var bob = new WinterStorm();
+console.log(bob.precip);
