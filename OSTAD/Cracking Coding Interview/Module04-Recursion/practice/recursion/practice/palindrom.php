@@ -1,9 +1,4 @@
 <?php
-
-// $a = [2, 3, 4, 5, 6, 7];
-// foreach ($a as $key=>$val) {
-//     echo $key . ': ' . $val ."\n";
-// };
 function checkPalidrom($str,$i,$j) {
     if($i>=$j){
         return true;
