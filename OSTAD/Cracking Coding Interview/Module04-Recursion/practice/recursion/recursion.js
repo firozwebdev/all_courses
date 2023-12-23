@@ -26,4 +26,4 @@ function checkPal(s) {
   return checkPalindrome(s, i, j);
 }
 
-console.log(checkPal("peepholes"));
+console.log(checkPal("peep"));
