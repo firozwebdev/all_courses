@@ -1,0 +1,1 @@
+show indexes from customers;
