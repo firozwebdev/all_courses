@@ -10,9 +10,9 @@ class TripController extends Controller
     public function create()
     {
         $locations = Location::all();
-        return $locations;
+        //return $locations;
 
-        return view('dashboard', compact('locations'));
+        return view('trips.create', compact('locations'));
     }
 
     public function store(Request $request)

@@ -1,7 +1,7 @@
 
 <!-- In resources/views/trips/create.blade.php -->
 
-@extends('layouts.app') <!-- Assuming you have a layout file -->
+@extends('welcome') <!-- Assuming you have a layout file -->
 
 @section('content')
     <div class="container">
