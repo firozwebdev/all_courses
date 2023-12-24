@@ -19,5 +19,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         \App\Models\Post::factory(100)->create();
+
+        $locations = ['Dhaka', 'Comilla', 'Chittagong', "Cox's Bazaar"];
+        foreach ($locations as $location) {
+            \App\Models\Location::create([
+                'name' => $location,
+            ]);
+        }
     }
 }

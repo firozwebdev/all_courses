@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
+use App\Http\Controllers\TripController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,24 +15,27 @@ use App\Models\User;
 |
 */
 
-// routes/web.php
-
-use App\Http\Controllers\ProductController;
-use App\Models\Post;
-
-Route::get('/',function(){
-    //$posts = Post::all();
-    $users = User::with('posts')->get();
-    $post = Post::with('user')->whereId(3)->first();
-    return $post;
+Route::get('/', function () {
+    return view('welcome');
 });
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::get('/products/{id}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
+
+// In routes/web.php
 
 
-Route::get('/products/{id}/sell', [ProductController::class, 'sell'])->name('products.sell');
-Route::post('/products/sale', [ProductController::class, 'sellUpdate'])->name('products.sold');
 
+
+Route::get('/dashboard', [TripController::class, 'create'])->middleware(['auth'])->name('trips.create');
+Route::post('/trips', [TripController::class, 'store'])->name('trips.store');
+// Route::get('/dashboard', function () {
+
+
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
