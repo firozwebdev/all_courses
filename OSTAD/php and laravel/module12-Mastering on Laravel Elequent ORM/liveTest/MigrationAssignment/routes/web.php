@@ -16,7 +16,8 @@ use App\Http\Controllers\TripController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    //return view('welcome');
 });
 
 // In routes/web.php
@@ -24,11 +25,11 @@ Route::get('/', function () {
 
 
 
-Route::get('/dashboard', [TripController::class, 'create'])->middleware(['auth'])->name('trips.create');
+Route::get('/trips/create', [TripController::class, 'create'])->middleware(['auth'])->name('trips.create');
 Route::post('/trips', [TripController::class, 'store'])->name('trips.store');
 // Route::get('/dashboard', function () {
-
-
+//
+//
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
