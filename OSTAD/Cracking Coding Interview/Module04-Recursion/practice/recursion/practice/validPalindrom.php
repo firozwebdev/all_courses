@@ -1,9 +1,11 @@
 <?php
 
 class Palindrome{
-    protected $string;
+    public $string;
+  
     function isPalidrome($str) {
-        $this->string = $str;
+        $this->string = strtolower(preg_replace("/[^A-Za-z0-9]/",'' , $str));
+        //$this->string = strtolower($str);
         $i = 0;
         $j = strlen($this->string)-1;
         if($this->checkPalidrome($i, $j)){
@@ -13,7 +15,7 @@ class Palindrome{
         }
 
         
-        return false;
+       
     }
     function checkPalidrome($i,$j) {
         if($i>=$j) return true;
@@ -23,7 +25,8 @@ class Palindrome{
 }
 
 $palidrome = new Palindrome();
-echo  $palidrome->isPalidrome("peepu");
+
+echo  $palidrome->isPalidrome("pe e p");
 
 
 
