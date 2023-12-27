@@ -9,7 +9,9 @@ function checkPalidrom($str,$i,$j) {
     return checkPalidrom($str,$i+1,$j-1);
 }
 function checkpal($str) {
-    //$pattern = (['^a-zA-Z0-9']);
+    $pattern = ("/[^A-Za-z0-9]/");
+    //$str = strtolower(preg_replace("/[^A-Za-z0-9]/",'' , $str));
+    $str = preg_replace($pattern, '', $str);
     $str = strtolower($str);
     $i = 0;
     $j = strlen($str)-1;
@@ -17,5 +19,5 @@ function checkpal($str) {
 
 }
 
-$output = checkpal("peep");
+$output = checkpal("p                      e e p");
 echo $output ? "True" : "False";
