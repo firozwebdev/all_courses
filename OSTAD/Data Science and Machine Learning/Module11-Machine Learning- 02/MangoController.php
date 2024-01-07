@@ -8,7 +8,7 @@ class TestController extends Controller
   */
   public function create() 
   {
-   echo "Method name is create";
+   echo "This is create method";
   } 
 
 }
