@@ -1,0 +1,3 @@
+function hello (){
+ $data = "this is from php code from python"; 
+} 
