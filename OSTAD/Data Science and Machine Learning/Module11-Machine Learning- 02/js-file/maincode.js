@@ -1,11 +1,9 @@
-import { index, create, edit, store, update, destroy } from "./modules/methods";
+import {index, create, store, edit, show, update, destroy} from "./modules/methods.js";
+import fs from "fs";
 function makeController(controllerName, methods) {
-  const fs = require("fs");
-  const mt = [];
+  //const fs = require("fs");
   let data = "<?php\n";
-  data = data.concat(
-    "namespace App/Http/Controllers;\nuse Illuminate/Http/Request;"
-  );
+  data = data.concat( "namespace App/Http/Controllers;\nuse Illuminate/Http/Request;");
   data = data.concat(`\nclass ${controllerName} extends Controller\n`);
   data = data.concat("{\n");
   methods.forEach((element) => {

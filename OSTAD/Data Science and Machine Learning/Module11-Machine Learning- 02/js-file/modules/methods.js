@@ -1,5 +1,5 @@
 export function index() {
-  mt = "";
+  let mt = "";
   mt = mt.concat("  /**\n");
   mt = mt.concat("  * Display a listing of the resource.\n");
   mt = mt.concat("  */\n");
@@ -8,12 +8,11 @@ export function index() {
   mt = mt.concat(`   echo \"Method name is index\";`);
   //mt += mi
   mt = mt.concat("\n  } \n");
-  mi = "";
   return mt;
 }
 
 export function create() {
-  mt = "";
+  let mt = "";
   mt = mt.concat("  /**\n");
   mt = mt.concat("  * Display a listing of the resource.\n");
   mt = mt.concat("  */\n");
@@ -24,7 +23,7 @@ export function create() {
   return mt;
 }
 export function store() {
-  mt = "";
+  let mt = "";
   mt = mt.concat("  /**\n");
   mt = mt.concat("  * Store a newly created resource in storage.\n");
   mt = mt.concat("  */\n");
@@ -35,7 +34,7 @@ export function store() {
   return mt;
 }
 export function update() {
-  mt = "";
+  let mt = "";
   mt = mt.concat("  /**\n");
   mt = mt.concat("  * Update the specified resource in storage.\n");
   mt = mt.concat("  */\n");
@@ -46,7 +45,7 @@ export function update() {
   return mt;
 }
 export function edit() {
-  mt = "";
+  let mt = "";
   mt = mt.concat("  /**\n");
   mt = mt.concat("  * Show the form for editing the specified resource.\n");
   mt = mt.concat("  */\n");
@@ -57,7 +56,7 @@ export function edit() {
   return mt;
 }
 export function show() {
-  mt = "";
+  let mt = "";
   mt = mt.concat("  /**\n");
   mt = mt.concat("  * Display the specified resource.\n");
   mt = mt.concat("  */\n");
@@ -68,7 +67,7 @@ export function show() {
   return mt;
 }
 export function destroy() {
-  mt = "";
+  let mt = "";
   mt = mt.concat("  /**\n");
   mt = mt.concat("  * Remove the specified resource from storage.\n");
   mt = mt.concat("  */\n");
