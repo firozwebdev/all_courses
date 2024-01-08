@@ -1,9 +1,10 @@
 import fs from "fs";
+
 function makeModel(modelName,columns){
     let data = "<?php\n";
     data = data.concat("namespace App\Models;\n");
     data = data.concat(`use App\\Models\\${modelName};\n`);
-    data = data.concat(`use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;`);
+    data = data.concat(`use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n`);
     data = data.concat(`use Illuminate\\Database\\Eloquent\\Model;\n`);
     data = data.concat(`class ${modelName} extends Model`);
     data = data.concat(`\n{\n`);
