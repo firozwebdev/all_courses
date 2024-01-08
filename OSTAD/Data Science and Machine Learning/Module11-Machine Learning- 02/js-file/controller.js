@@ -2,7 +2,7 @@ import {index, create, store, edit, show, update, destroy} from "./modules/contr
 import fs from "fs";
 function makeController(controllerName, methods) {
   let data = "<?php\n";
-  data = data.concat("namespace App\Http\Controllers;\nuse Illuminate\Http\Request;");
+  data = data.concat("namespace App\\Http\\Controllers;\nuse Illuminate\\Http\\Request;");
   data = data.concat(`\nclass ${controllerName} extends Controller\n`);
   data = data.concat("{\n");
   methods.forEach((element) => {

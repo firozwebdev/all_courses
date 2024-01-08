@@ -1,10 +1,10 @@
 var s = 'HelloWorld'
-for (let index = 0; index < s.length; index++) {
-    const element = s[index];
-    //console.log(element)
+// for (let index = 0; index < s.length; index++) {
+//     const element = s[index];
+//     //console.log(element)
     
-}
-// s = s.replace(/([A-Z])/g, '$1').trim()
+// }
+// s = s.replace(/([A-Z])/g, '(\)').trim()
 // console.log(s)
 function test(){
     var strings = 'AppHttpControllers';
@@ -18,18 +18,25 @@ function test(){
         }else{
             if (character == character.toUpperCase()) {
                 result += '\\'+character
-                //console.log(result)
-                if(result=='pp\Http\C'){
-                    console.log('App\Http\Controllers');
-                }
+                
             }
             if (character == character.toLowerCase()){
                 result += character
             }
+
+            console.log(result)
+                
         }
         i++;
+       
     }
-    
+   
 }
 test()
+
+function check(data){
+    console.log("'" + data.join("', '") + "'");
+}
+check(['a','b','c'])
+
 
