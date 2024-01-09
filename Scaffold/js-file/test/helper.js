@@ -53,35 +53,39 @@
 //   console.log(table_name('customer'))
 
 // seperate two strings
-function seperateStrings(arr) {
+export function seperateStrings(arr) {
   //console.log(arr);
+  let optionRegx = /\(([^)]+)\)/;
+  let typeRegx = /^[^\(]+/
   let columns = [];
-  let column = {
-    name: "",
-    type: "",
-  };
-
+  let typeOption = ''
   arr.forEach((element) => {
     //console.log(element);
+    let matches = optionRegx.exec(element);
+    typeOption = matches ? matches[1] : ''
+
     let data = element.split(":");
-
-    //columns.push(columns);
-
-    //console.log(columns);
-
+    let dtype = typeRegx.exec(data[1])
     columns.push({
       name: data[0],
-      type: data[1],
+      type: dtype[0],
+      typeOption: typeOption,
+      nullable: data[2] ? true : false,
     });
   });
   return columns;
 }
 console.log(
   seperateStrings([
-    "name:string",
+    "name:string(15):nullable",
     "email:string",
     "address:string",
     "age:string",
   ])
 );
 //seperateStrings(["name:string", "email:string"]);
+
+// var regExp = /\(([^)]+)\)/;
+// var matches = regExp.exec("I expect five hundred dollars ($500).");
+// //matches[1] contains the value between the parentheses
+// console.log(matches[1]);
