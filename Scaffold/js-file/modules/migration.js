@@ -3,9 +3,9 @@ import {
   migrationFileName,
   tableName,
   columnNameAndTypeSeperator,
-} from "./modules/helper.js";
+} from "./helper.js";
 
-function makeMigration(modelName, columns) {
+export function makeMigration(modelName, columns) {
   let data = "<?php\n";
   data = data.concat("use Illuminate\\Database\\Migrations\\Migration;\n");
   data = data.concat(`use Illuminate\\Database\\Schema\\Blueprint;\n`);
@@ -56,15 +56,16 @@ function makeMigration(modelName, columns) {
     (err) => {
       // In case of a error throw err.
       if (err) throw err;
-      console.log("working fine");
+
+      console.log(modelName + " Migration created successfully");
     }
   );
 }
 
-const columns = [
-  "name:string(20)",
-  "email:string(30):nullable",
-  "address:string",
-  "age:string",
-];
-makeMigration("Customer", columns);
+// const columns = [
+//   "name:string(20)",
+//   "email:string(30):nullable",
+//   "address:string",
+//   "age:string",
+// ];
+// makeMigration("Client", columns);

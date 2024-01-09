@@ -1,8 +1,18 @@
-import {index, create, store, edit, show, update, destroy} from "./modules/controllerMethods.js";
+import {
+  index,
+  create,
+  store,
+  edit,
+  show,
+  update,
+  destroy,
+} from "./controllerMethods.js";
 import fs from "fs";
-function makeController(controllerName, methods) {
+export function makeController(controllerName, methods) {
   let data = "<?php\n";
-  data = data.concat("namespace App\\Http\\Controllers;\nuse Illuminate\\Http\\Request;");
+  data = data.concat(
+    "namespace App\\Http\\Controllers;\nuse Illuminate\\Http\\Request;"
+  );
   data = data.concat(`\nclass ${controllerName} extends Controller\n`);
   data = data.concat("{\n");
   methods.forEach((element) => {
@@ -35,15 +45,6 @@ function makeController(controllerName, methods) {
   fs.writeFile(controllerName + ".php", data, (err) => {
     // In case of a error throw err.
     if (err) throw err;
-    console.log("working fine");
+    console.log(controllerName + " created successfully !");
   });
 }
-
-makeController("PostController", [
-  "index",
-  "create",
-  "edit",
-  "store",
-  "update",
-  "destroy",
-]);

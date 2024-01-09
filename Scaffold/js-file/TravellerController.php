@@ -1,7 +1,7 @@
 <?php
-namespace App/Http/Controllers;
-use Illuminate/Http/Request;
-class HelloController extends Controller
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+class TravellerController extends Controller
 {
   /**
   * Display a listing of the resource.

@@ -22,24 +22,21 @@ export function tableName(modelName) {
   }
 }
 
-
 export function columnNameAndTypeSeperator(arr) {
   let optionRegx = /\(([^)]+)\)/;
-  let typeRegx = /^[^\(]+/
+  let typeRegx = /^[^\(]+/;
   let columns = [];
-  let typeOption = ''
+  let typeOption = "";
   arr.forEach((element) => {
-    //console.log(element);
     let matches = optionRegx.exec(element);
-    typeOption = matches ? matches[1] : ''
-
+    typeOption = matches?.[1] ? matches[1] : "";
     let data = element.split(":");
-    let dtype = typeRegx.exec(data[1])
+    let dtype = typeRegx.exec(data[1]);
     columns.push({
       name: data[0],
-      type: dtype[0],
+      type: dtype?.[0] ? dtype[0] : "string",
       typeOption: typeOption,
-      nullable: data[2] ? true : false,
+      nullable: data?.[2] ? true : false,
     });
   });
   return columns;
