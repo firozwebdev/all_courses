@@ -43,4 +43,4 @@ function makeMigration(modelName){
 }
 
 const columns = ['name','email','address','age','fb_id']
-makeMigration('User')
+makeMigration('Customer')
