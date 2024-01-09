@@ -1,7 +1,11 @@
 import fs from "fs";
-import { migrationFileName, tableName,columnNameAndTypeSeperator} from "./modules/helper.js";
+import {
+  migrationFileName,
+  tableName,
+  columnNameAndTypeSeperator,
+} from "./modules/helper.js";
 
-function makeMigration(modelName,columns) {
+function makeMigration(modelName, columns) {
   let data = "<?php\n";
   data = data.concat("use Illuminate\\Database\\Migrations\\Migration;\n");
   data = data.concat(`use Illuminate\\Database\\Schema\\Blueprint;\n`);
@@ -21,11 +25,17 @@ function makeMigration(modelName,columns) {
   data = data.concat(`      $table->id();\n`);
   let colNameType = columnNameAndTypeSeperator(columns);
   colNameType.forEach((element) => {
-    data = data.concat(`      $table->${element.type}('${element.name}'${element.typeOption ? ',' + element.typeOption : ''})${element.nullable ?'->nullable()' : ''};\n`);
-  })
-  
+    data = data.concat(
+      `      $table->${element.type}('${element.name}'${
+        element.typeOption ? "," + element.typeOption : ""
+      })${element.nullable ? "->nullable()" : ""};\n`
+    );
+  });
+
   data = data.concat(`      $table->string('password');\n`);
-  data = data.concat(`      $table->timestamp('email_verified_at')->nullable();\n`);
+  data = data.concat(
+    `      $table->timestamp('email_verified_at')->nullable();\n`
+  );
   data = data.concat(`      $table->rememberToken();\n`);
   data = data.concat(`      $table->timestamps();\n`);
   data = data.concat(`    });\n`);
@@ -51,13 +61,10 @@ function makeMigration(modelName,columns) {
   );
 }
 
-
-
 const columns = [
   "name:string(20)",
-  "email:string:nullable",
+  "email:string(30):nullable",
   "address:string",
   "age:string",
-  
 ];
-makeMigration('Customer',columns)
+makeMigration("Customer", columns);
