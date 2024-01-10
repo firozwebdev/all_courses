@@ -17,7 +17,7 @@ This below code is for Multiple models, migrations and controllers
 const models = [
   {
     modelName: "User",
-    columns: ["name:string", "email:string(20)", "phone_no:string"],
+    columns: ["name:string", "email:string(20)", "phone_no"],
     methods: ["index", "create", "update", "destroy"],
     relationships: ["oneToOne:profile", "hasMany:post"],
   },

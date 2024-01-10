@@ -42,9 +42,12 @@ export function columnNameAndTypeSeperator(arr) {
     typeOption = matches?.[1] ? matches[1] : "";
     let data = element.split(":");
     let dtype = typeRegx.exec(data[1]);
+    // if(dtype?.[0]=="undefined") {
+    //   dtype?.[0] = "string";
+    // }
     columns.push({
       name: data[0],
-      type: dtype?.[0] ? dtype[0] : "string",
+      type: dtype?.[0] == "undefined" ? "string" : dtype?.[0],
       typeOption: typeOption,
       nullable: data?.[2] ? true : false,
     });
