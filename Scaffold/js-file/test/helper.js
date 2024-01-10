@@ -52,37 +52,49 @@
 
 //   console.log(table_name('customer'))
 
-// seperate two strings
-export function seperateStrings(arr) {
-  //console.log(arr);
-  let optionRegx = /\(([^)]+)\)/;
-  let typeRegx = /^[^\(]+/
-  let columns = [];
-  let typeOption = ''
+//extract column name from columns
+export function columnName(arr) {
+  let columnName = [];
   arr.forEach((element) => {
-    //console.log(element);
-    let matches = optionRegx.exec(element);
-    typeOption = matches ? matches[1] : ''
-
     let data = element.split(":");
-    let dtype = typeRegx.exec(data[1])
+    columnName.push(data[0]);
+  });
+  return columnName;
+}
+
+console.log(
+  columnName(["name:string(30)", "email:string", "address:text", "age:integer"])
+);
+
+// seperate two strings
+export function columnNameAndTypeSeperator(arr) {
+  let optionRegx = /\(([^)]+)\)/;
+  let typeRegx = /^[^\(]+/;
+  let columns = [];
+  let typeOption = "";
+  arr.forEach((element) => {
+    let matches = optionRegx.exec(element);
+    typeOption = matches?.[1] ? matches[1] : "";
+    let data = element.split(":");
+    let dtype = typeRegx.exec(data[1]);
     columns.push({
       name: data[0],
-      type: dtype[0],
+      type: dtype?.[0] ? dtype[0] : "string",
       typeOption: typeOption,
-      nullable: data[2] ? true : false,
+      nullable: data?.[2] ? true : false,
     });
   });
   return columns;
 }
-console.log(
-  seperateStrings([
-    "name:string(15):nullable",
-    "email:string",
-    "address:string",
-    "age:string",
-  ])
-);
+
+// console.log(
+//   columnNameAndTypeSeperator([
+//     "name:string(15):nullable",
+//     "email:string",
+//     "address:string",
+//     "age:string",
+//   ])
+// );
 //seperateStrings(["name:string", "email:string"]);
 
 // var regExp = /\(([^)]+)\)/;

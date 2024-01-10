@@ -22,6 +22,16 @@ export function tableName(modelName) {
   }
 }
 
+//extract column name from columns
+export function getColumnName(arr) {
+  let columnName = [];
+  arr.forEach((element) => {
+    let data = element.split(":");
+    columnName.push(data[0]);
+  });
+  return columnName;
+}
+
 export function columnNameAndTypeSeperator(arr) {
   let optionRegx = /\(([^)]+)\)/;
   let typeRegx = /^[^\(]+/;

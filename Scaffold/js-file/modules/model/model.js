@@ -1,6 +1,7 @@
 import fs from "fs";
 import { makeMigration } from "../migration/migration.js";
 import { makeController } from "../controller/controller.js";
+import { getColumnName } from "../helper.js";
 export function makeModel(path, modelName, columns, methods) {
   let data = "<?php\n";
   data = data.concat("namespace AppModels;\n");
@@ -13,7 +14,9 @@ export function makeModel(path, modelName, columns, methods) {
   data = data.concat(`\n{\n`);
   data = data.concat(`  use HasFactory;\n`);
   data = data.concat(
-    `  protected $fillable = [${"'" + columns.join("', '") + "'"}];`
+    `  protected $fillable = [${
+      "'" + getColumnName(columns).join("', '") + "'"
+    }];`
   ); //"'" + data.join("', '") + "'"
   data = data.concat(`\n  public function user(){\n`);
   data = data.concat(`    return $this->belongsTo(User::class);\n`);
