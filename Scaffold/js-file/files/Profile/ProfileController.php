@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-class OrderController extends Controller
+class ProfileController extends Controller
 {
   /**
   * Display a listing of the resource.
@@ -16,6 +16,13 @@ class OrderController extends Controller
   public function create() 
   {
    echo "Method name is create";
+  } 
+  /**
+  * Store a newly created resource in storage.
+  */
+  public function store(Request $request) 
+  {
+   echo "Method name is store";
   } 
   /**
   * Update the specified resource in storage.

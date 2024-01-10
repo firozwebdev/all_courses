@@ -51,3 +51,35 @@ export function columnNameAndTypeSeperator(arr) {
   });
   return columns;
 }
+
+//extract relatinship from relationship array
+export function getRelationship(arr = []) {
+  let columns = [];
+  if (arr.length > 0) {
+    let optionRegx = /\(([^)]+)\)/;
+    let typeRegx = /^[^\(]+/;
+    let typeOption = "";
+    arr.forEach((element) => {
+      let matches = optionRegx.exec(element);
+      typeOption = matches?.[1] ? matches[1] : "";
+      let data = element.split(":");
+      let dtype = typeRegx.exec(data[1]);
+      columns.push({
+        relationship: data?.[0] ? true : false,
+        type: data[0],
+        name: dtype?.[0] ? dtype[0] : false,
+      });
+    });
+    return columns;
+  } else {
+    return 0;
+  }
+}
+
+//console.log(getRelationship(["oneToOne:profile", "hasMany:post"]));
+export function capWord(data) {
+  const word = data;
+
+  const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
+  return capitalized;
+}

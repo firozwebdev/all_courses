@@ -1,8 +1,14 @@
 import fs from "fs";
 import { makeMigration } from "../migration/migration.js";
 import { makeController } from "../controller/controller.js";
-import { getColumnName } from "../helper.js";
-export function makeModel(path, modelName, columns, methods) {
+import { getColumnName, getRelationship, capWord } from "../helper.js";
+export function makeModel(
+  path,
+  modelName,
+  columns,
+  methods,
+  relationships = 0
+) {
   let data = "<?php\n";
   data = data.concat("namespace AppModels;\n");
   data = data.concat(`use App\\Models\\${modelName};\n`);
@@ -18,11 +24,19 @@ export function makeModel(path, modelName, columns, methods) {
       "'" + getColumnName(columns).join("', '") + "'"
     }];`
   ); //"'" + data.join("', '") + "'"
-  data = data.concat(`\n  public function user(){\n`);
-  data = data.concat(`    return $this->belongsTo(User::class);\n`);
-  data = data.concat(`  }`);
-  data = data.concat(`\n}`);
+  let relationshipItem = getRelationship(relationships);
+  //console.log(relationshipItem);
+  if (relationshipItem.length > 0) {
+    relationshipItem.forEach((element) => {
+      data = data.concat(`\n  public function ${element.name}(){\n`);
+      data = data.concat(
+        `    return $this->${element.type}(${capWord(element.name)}::class);\n`
+      );
+      data = data.concat(`  }`);
+    });
+  }
 
+  data = data.concat(`\n}`);
   fs.writeFile(path + modelName + ".php", data, (err) => {
     // In case of a error throw err.
     if (err) throw err;

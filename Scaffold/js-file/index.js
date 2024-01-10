@@ -17,23 +17,21 @@ This below code is for Multiple models, migrations and controllers
 const models = [
   {
     modelName: "User",
-    columns: ["name:string(30)", "email:string", "address:text", "age:integer"],
-    methods: ["index", "create", "edit", "store", "update", "destroy"],
-  },
-  {
-    modelName: "Client",
-    columns: ["name:string(30)", "email:string", , "age:integer"],
-    methods: ["index", "create", "edit", "store", "update", "destroy"],
-  },
-  {
-    modelName: "Customer",
-    columns: ["name", "email:string", "address:text", "age:integer"],
-    methods: ["index", "create", "edit", "store", "update", "destroy"],
-  },
-  {
-    modelName: "Order",
-    columns: ["order_item:string", "qty:integer", "price:integer"],
+    columns: ["name:string", "email:string(20)", "phone_no:string"],
     methods: ["index", "create", "update", "destroy"],
+    relationships: ["oneToOne:profile", "hasMany:post"],
+  },
+  {
+    modelName: "Profile",
+    columns: ["user_id:foreignId", "photo:string", "address:text"],
+    methods: ["index", "create", "store", "update", "destroy"],
+    relationships: ["belongsTo:user"],
+  },
+  {
+    modelName: "Post",
+    columns: ["user_id:foreignId", "title:string", "description:text"],
+    methods: ["index", "create", "store", "update", "destroy"],
+    relationships: ["belongsTo:user"],
   },
 ];
 
@@ -43,7 +41,8 @@ models.forEach((model) => {
       "./files/" + model.modelName + "/",
       model.modelName,
       model.columns,
-      model.methods
+      model.methods,
+      model.relationships
     );
   });
 });

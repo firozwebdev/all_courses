@@ -8,11 +8,11 @@ return new class extends Migration
   * Run the migrations.  */
   public function up(): void
   {
-    Schema::create('clients', function (Blueprint $table) {
+    Schema::create('posts', function (Blueprint $table) {
       $table->id();
-      $table->string('name',30);
-      $table->string('email');
-      $table->integer('age');
+      $table->foreignId('user_id');
+      $table->string('title');
+      $table->text('description');
       $table->string('password');
       $table->timestamp('email_verified_at')->nullable();
       $table->rememberToken();
@@ -25,6 +25,6 @@ return new class extends Migration
   */
   public function down(): void
   {
-    Schema::dropIfExists('clients');
+    Schema::dropIfExists('posts');
   }
 };

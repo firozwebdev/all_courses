@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-class CustomerController extends Controller
+class PostController extends Controller
 {
   /**
   * Display a listing of the resource.
@@ -16,13 +16,6 @@ class CustomerController extends Controller
   public function create() 
   {
    echo "Method name is create";
-  } 
-  /**
-  * Show the form for editing the specified resource.
-  */
-  public function edit(string $id) 
-  {
-   echo "Method name is edit";
   } 
   /**
   * Store a newly created resource in storage.

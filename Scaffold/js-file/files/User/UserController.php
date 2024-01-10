@@ -18,20 +18,6 @@ class UserController extends Controller
    echo "Method name is create";
   } 
   /**
-  * Show the form for editing the specified resource.
-  */
-  public function edit(string $id) 
-  {
-   echo "Method name is edit";
-  } 
-  /**
-  * Store a newly created resource in storage.
-  */
-  public function store(Request $request) 
-  {
-   echo "Method name is store";
-  } 
-  /**
   * Update the specified resource in storage.
   */
   public function update(Request $request, string $id) 
