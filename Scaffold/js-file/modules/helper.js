@@ -16,9 +16,9 @@ export function tableName(modelName) {
   // table name will be plural
 
   if (modelName.endsWith("s")) {
-    return modelName;
+    return smallWord(modelName);
   } else {
-    return modelName.toLowerCase() + "s";
+    return smallWord(modelName) + "s";
   }
 }
 
@@ -27,7 +27,7 @@ export function getColumnName(arr) {
   let columnName = [];
   arr.forEach((element) => {
     let data = element.split(":");
-    columnName.push(data[0]);
+    columnName.push(smallWord(data?.[0]));
   });
   return columnName;
 }
@@ -39,15 +39,15 @@ export function columnNameAndTypeSeperator(arr) {
   let typeOption = "";
   arr.forEach((element) => {
     let matches = optionRegx.exec(element);
-    typeOption = matches?.[1] ? matches[1] : "";
+    typeOption = matches?.[1] ? smallWord(matches[1]) : "";
     let data = element.split(":");
     let dtype = typeRegx.exec(data[1]);
     // if(dtype?.[0]=="undefined") {
     //   dtype?.[0] = "string";
     // }
     columns.push({
-      name: data[0],
-      type: dtype?.[0] == "undefined" ? "string" : dtype?.[0],
+      name: smallWord(data?.[0]),
+      type: dtype?.[0] == "undefined" ? "string" : smallWord(dtype?.[0]),
       typeOption: typeOption,
       nullable: data?.[2] ? true : false,
     });
@@ -69,8 +69,8 @@ export function getRelationship(arr = []) {
       let dtype = typeRegx.exec(data[1]);
       columns.push({
         relationship: data?.[0] ? true : false,
-        type: data[0],
-        name: dtype?.[0] ? dtype[0] : false,
+        type: camelWord(data?.[0]),
+        name: dtype?.[0] ? capWord(dtype[0]) : false,
       });
     });
     return columns;
@@ -79,10 +79,33 @@ export function getRelationship(arr = []) {
   }
 }
 
+//console.log(getRelationship(["has Many:post", "belongsTo:profile"]));
+
 //console.log(getRelationship(["oneToOne:profile", "hasMany:post"]));
 export function capWord(data) {
   const word = data;
 
   const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
   return capitalized;
+}
+
+export function smallWord(data) {
+  const lowerCaseString = data.toLowerCase();
+  return lowerCaseString;
+}
+
+export function pascalWord(data) {
+  const pascalWord = data.replace(/(\w)(\w*)/g, function (g0, g1, g2) {
+    return g1.toUpperCase() + g2.toLowerCase();
+  });
+
+  return pascalWord;
+}
+
+export function camelWord(data) {
+  const camelWord = data
+    .trim()
+    .replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ""));
+
+  return camelWord;
 }

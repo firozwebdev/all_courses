@@ -3,9 +3,12 @@ import {
   migrationFileName,
   tableName,
   columnNameAndTypeSeperator,
+  smallWord,
+  capWord,
 } from "../helper.js";
 
-export function makeMigration(path, modelName, columns) {
+export function makeMigration(path, model, columns) {
+  let modelName = capWord(model);
   let data = "<?php\n";
   data = data.concat("use Illuminate\\Database\\Migrations\\Migration;\n");
   data = data.concat(`use Illuminate\\Database\\Schema\\Blueprint;\n`);
@@ -18,15 +21,13 @@ export function makeMigration(path, modelName, columns) {
   data = data.concat(`  public function up(): void\n`);
   data = data.concat(`  {\n`);
   data = data.concat(
-    `    Schema::create('${tableName(
-      modelName
-    )}', function (Blueprint $table) {\n`
+    `    Schema::create('${tableName(model)}', function (Blueprint $table) {\n`
   );
   data = data.concat(`      $table->id();\n`);
   let colNameType = columnNameAndTypeSeperator(columns);
   colNameType.forEach((element) => {
     data = data.concat(
-      `      $table->${element.type}('${element.name}'${
+      `      $table->${smallWord(element.type)}('${smallWord(element.name)}'${
         element.typeOption ? "," + element.typeOption : ""
       })${element.nullable ? "->nullable()" : ""};\n`
     );
@@ -46,22 +47,18 @@ export function makeMigration(path, modelName, columns) {
   data = data.concat(`  */\n`);
   data = data.concat(`  public function down(): void\n`);
   data = data.concat(`  {\n`);
-  data = data.concat(`    Schema::dropIfExists('${tableName(modelName)}');\n`);
+  data = data.concat(`    Schema::dropIfExists('${tableName(model)}');\n`);
   data = data.concat(`  }\n`);
   data = data.concat(`};\n`);
 
   fs.writeFile(
-    path +
-      migrationFileName() +
-      "_create_" +
-      modelName.toLowerCase() +
-      "s_table.php",
+    path + smallWord(migrationFileName() + "_create_" + model + "s_table.php"),
     data,
     (err) => {
       // In case of a error throw err.
       if (err) throw err;
 
-      console.log(modelName + " migration created successfully !");
+      console.log(model + " migration created successfully !");
     }
   );
 }

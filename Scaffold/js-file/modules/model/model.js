@@ -1,14 +1,14 @@
 import fs from "fs";
 import { makeMigration } from "../migration/migration.js";
 import { makeController } from "../controller/controller.js";
-import { getColumnName, getRelationship, capWord } from "../helper.js";
-export function makeModel(
-  path,
-  modelName,
-  columns,
-  methods,
-  relationships = 0
-) {
+import {
+  getColumnName,
+  getRelationship,
+  capWord,
+  smallWord,
+} from "../helper.js";
+export function makeModel(path, model, columns, methods, relationships = 0) {
+  let modelName = capWord(model);
   let data = "<?php\n";
   data = data.concat("namespace AppModels;\n");
   data = data.concat(`use App\\Models\\${modelName};\n`);
@@ -28,9 +28,9 @@ export function makeModel(
   //console.log(relationshipItem);
   if (relationshipItem.length > 0) {
     relationshipItem.forEach((element) => {
-      data = data.concat(`\n  public function ${element.name}(){\n`);
+      data = data.concat(`\n  public function ${smallWord(element.name)}(){\n`);
       data = data.concat(
-        `    return $this->${element.type}(${capWord(element.name)}::class);\n`
+        `    return $this->${element.type}(${element.name}::class);\n`
       );
       data = data.concat(`  }`);
     });
