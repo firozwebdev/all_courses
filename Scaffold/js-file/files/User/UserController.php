@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-class TravellerController extends Controller
+class UserController extends Controller
 {
   /**
   * Display a listing of the resource.

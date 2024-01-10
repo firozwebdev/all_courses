@@ -8,7 +8,7 @@ import {
   destroy,
 } from "./controllerMethods.js";
 import fs from "fs";
-export function makeController(controllerName, methods) {
+export function makeController(path, controllerName, methods) {
   let data = "<?php\n";
   data = data.concat(
     "namespace App\\Http\\Controllers;\nuse Illuminate\\Http\\Request;"
@@ -42,7 +42,7 @@ export function makeController(controllerName, methods) {
   //console.log(data);
   data = data.concat("}\n");
 
-  fs.writeFile(controllerName + ".php", data, (err) => {
+  fs.writeFile(path + controllerName + ".php", data, (err) => {
     // In case of a error throw err.
     if (err) throw err;
     console.log(controllerName + " created successfully !");
