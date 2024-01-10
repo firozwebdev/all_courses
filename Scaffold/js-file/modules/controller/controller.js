@@ -1,3 +1,4 @@
+import fs from "fs";
 import {
   index,
   create,
@@ -7,7 +8,8 @@ import {
   update,
   destroy,
 } from "./controllerMethods.js";
-import fs from "fs";
+
+import { pascalWord } from "../helper.js";
 export function makeController(path, controllerName, methods) {
   let data = "<?php\n";
   data = data.concat(
