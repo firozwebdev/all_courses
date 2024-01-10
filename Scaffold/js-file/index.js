@@ -27,12 +27,12 @@ const models = [
   },
   {
     modelName: "Customer",
-    columns: ["name:string(30)", "email:string", "address:text", "age:integer"],
+    columns: ["name", "email:string", "address:text", "age:integer"],
     methods: ["index", "create", "edit", "store", "update", "destroy"],
   },
   {
     modelName: "Order",
-    columns: ["order_item:integer", "qty:integer", "price:integer"],
+    columns: ["order_item:string", "qty:integer", "price:integer"],
     methods: ["index", "create", "update", "destroy"],
   },
 ];
