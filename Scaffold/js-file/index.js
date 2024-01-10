@@ -25,10 +25,19 @@ const models = [
     columns: ["name:string(30)", "email:string", , "age:integer"],
     methods: ["index", "create", "edit", "store", "update", "destroy"],
   },
+  {
+    modelName: "Customer",
+    columns: ["name:string(30)", "email:string", "address:text", "age:integer"],
+    methods: ["index", "create", "edit", "store", "update", "destroy"],
+  },
+  {
+    modelName: "Order",
+    columns: ["order_item:integer", "qty:integer", "price:integer"],
+    methods: ["index", "create", "update", "destroy"],
+  },
 ];
 
 models.forEach((model) => {
-  //console.log(model);
   fs.mkdir("./files/" + model.modelName + "/", function () {
     makeModel(
       "./files/" + model.modelName + "/",
