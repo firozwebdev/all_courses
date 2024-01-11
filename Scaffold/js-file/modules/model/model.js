@@ -1,5 +1,6 @@
 import fs from "fs";
 import { makeMigration } from "../migration/migration.js";
+import { makeFactory } from "../migration/factory.js";
 import { makeController } from "../controller/controller.js";
 import {
   getColumnName,
@@ -7,7 +8,7 @@ import {
   capWord,
   smallWord,
 } from "../helper.js";
-export function makeModel(path, model, columns, methods, relationships = 0) {
+export function makeModel(path, model, columns, methods, relationships = 0,seeds) {
   let modelName = capWord(model);
   let data = "<?php\n";
   data = data.concat("namespace AppModels;\n");
@@ -42,6 +43,7 @@ export function makeModel(path, model, columns, methods, relationships = 0) {
     if (err) throw err;
     makeMigration(path, modelName, columns);
     makeController(path, modelName + "Controller", methods);
+    makeFactory(path, modelName,seeds);
     console.log(modelName + " created successfully !");
   });
 }

@@ -20,18 +20,21 @@ const models = [
     columns: ["name:string", "email:string(20)", "phone_no"],
     methods: ["index", "create", "update", "destroy"],
     relationships: ["oneToOne:profile", "hasMany:post"],
+    seeds:["name:fake()->name()", "email:fake()->unique()->safeEmail()", "phone_no:fake()->phoneNumber()"],
   },
   {
     model: "Profile",
-    columns: ["user_id:foreignId", "photo:string", "address:text"],
+    columns: ["photo:string", "address:text"],
     methods: ["index", "create", "store", "update", "destroy"],
     relationships: ["belongsTo:user"],
+    seeds:["photo:fake()->imageUrl()", "address:fake()->address()"],
   },
   {
     model: "Post",
-    columns: ["user_id:foreignId", "title:string", "description:text"],
+    columns: ["title:string", "description:text"],
     methods: ["index", "create", "store", "update", "destroy"],
     relationships: ["belongsTo:user"],
+    seeds: ["title:fake()->sentence()", "description:fake()->paragraph()"],
   },
 ];
 
@@ -42,7 +45,8 @@ models.forEach((model) => {
       model.model,
       model.columns,
       model.methods,
-      model.relationships
+      model.relationships,
+      model.seeds
     );
   });
 });

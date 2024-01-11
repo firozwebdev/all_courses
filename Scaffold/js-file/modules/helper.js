@@ -32,6 +32,26 @@ export function getColumnName(arr) {
   return columnName;
 }
 
+export function getColWithValue(arr) { // input: columns
+  let columnName = [];
+  arr.forEach((element) => {
+    let data = element.split(":");
+    columnName.push({
+      colName: smallWord(data?.[0]),
+      colValue: smallWord(data?.[1])
+    }
+      );
+  });
+  return columnName;
+}
+
+// console.log(getColWithValue([
+//   "name:fake()->name()", 
+//   "email:fake()->unique()->safeEmail()",
+//   "age:fake()->numberBetween(10, 50)",
+//   "address:fake()->address()"
+// ]));
+
 export function columnNameAndTypeSeperator(arr) {
   let optionRegx = /\(([^)]+)\)/;
   let typeRegx = /^[^\(]+/;
@@ -43,17 +63,19 @@ export function columnNameAndTypeSeperator(arr) {
     let data = element.split(":");
     let dtype = typeRegx.exec(data[1]);
     // if(dtype?.[0]=="undefined") {
-    //   dtype?.[0] = "string";
-    // }
-    columns.push({
-      name: smallWord(data?.[0]),
-      type: dtype?.[0] == "undefined" ? "string" : smallWord(dtype?.[0]),
-      typeOption: typeOption,
-      nullable: data?.[2] ? true : false,
+      //   dtype?.[0] = "string";
+      // }
+      columns.push({
+        name: smallWord(data?.[0]),
+        type: dtype?.[0] == "undefined" ? "string" : smallWord(dtype?.[0]),
+        typeOption: typeOption,
+        nullable: data?.[2] ? true : false,
+      });
     });
-  });
-  return columns;
-}
+    return columns;
+  }
+  //console.log(columnNameAndTypeSeperator(["name:string(30)", "email:string", "address:text", "age:integer"]));
+
 
 //extract relatinship from relationship array
 export function getRelationship(arr = []) {
