@@ -33,11 +33,14 @@ export function makeMigration(path, model, columns) {
     );
   });
 
-  data = data.concat(`      $table->string('password');\n`);
-  data = data.concat(
-    `      $table->timestamp('email_verified_at')->nullable();\n`
-  );
-  data = data.concat(`      $table->rememberToken();\n`);
+  if(modelName == 'User'){
+    data = data.concat(`      $table->string('password');\n`);
+    data = data.concat(
+      `      $table->timestamp('email_verified_at')->nullable();\n`
+    );
+    data = data.concat(`      $table->rememberToken();\n`);
+  }
+
   data = data.concat(`      $table->timestamps();\n`);
   data = data.concat(`    });\n`);
   data = data.concat(`  }\n`);

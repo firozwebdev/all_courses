@@ -11,8 +11,7 @@ import {
 export function makeModel(path, model, columns, methods, relationships = 0,seeds) {
   let modelName = capWord(model);
   let data = "<?php\n";
-  data = data.concat("namespace AppModels;\n");
-  data = data.concat(`use App\\Models\\${modelName};\n`);
+  data = data.concat("namespace App\\Models;\n");
   data = data.concat(
     `use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n`
   );

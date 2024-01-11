@@ -12,7 +12,7 @@ export function makeFactory(path,model, seeds) {
   let modelName = capWord(model);
   let ColWithValue = getColWithValue(seeds)
   let data = "<?php\n";
-  data = data.concat("namespace Database\\Factories\n");
+  data = data.concat("namespace Database\\Factories;\n");
   data = data.concat("use Illuminate\\Database\\Eloquent\\Factories\\Factory;\n");
   data = data.concat(`use Illuminate\\Support\\Facades\\Hash;\n`);
   data = data.concat(`/**\n`);
@@ -46,19 +46,24 @@ export function makeFactory(path,model, seeds) {
   data = data.concat(`    ];\n`);
   data = data.concat(`  }\n`);
   data = data.concat(`\n`);
-  data = data.concat(`  /**\n`);
-  data = data.concat(`  * Indicate that the model's email address should be unverified.\n`);
-  data = data.concat(`  */\n`);
-  data = data.concat(`  public function unverified(): static\n`);
-  data = data.concat(`  {\n`);
-  data = data.concat(`    return $this->state(fn (array \$attributes) => [\n`);
-  data = data.concat(`      'email_verified_at' => null,\n`);
-  data = data.concat(`    ]);\n`);
-  data = data.concat(`  }\n`);
+
+ 
+  if(modelName == 'User'){
+    data = data.concat(`  /**\n`);
+    data = data.concat(`  * Indicate that the model's email address should be unverified.\n`);
+    data = data.concat(`  */\n`);
+    data = data.concat(`  public function unverified(): static\n`);
+    data = data.concat(`  {\n`);
+    data = data.concat(`    return $this->state(fn (array \$attributes) => [\n`);
+    data = data.concat(`      'email_verified_at' => null,\n`);
+    data = data.concat(`    ]);\n`);
+    data = data.concat(`  }\n`);
+  }
+
   data = data.concat(`}\n`);
 
   fs.writeFile(
-    path + modelName + "Factory table.php",
+    path + modelName + "Factory.php",
     data,
     (err) => {
       // In case of a error throw err.
