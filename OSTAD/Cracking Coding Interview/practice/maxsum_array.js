@@ -25,7 +25,7 @@
 //     max_sum = Math.max(max_sum, current_sum);
 //   }
 //   return max_sum;
-// }
+// }`
 
 function maxsum(arr, B) {
   let max_sum = 0;
@@ -41,4 +41,12 @@ function maxsum(arr, B) {
   }
   return max_sum;
 }
-console.log(maxsum([5, -2, 3, 1, 2], 3));
+
+//console.log(maxsum([5, -2, 3, 1, 2], 3));
+
+function test(data) {
+  // Your code here
+  return data;
+}
+
+console.log(test("hello"));
