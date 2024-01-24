@@ -3,7 +3,7 @@ import React from "react";
 import "./App.css";
 
 function App() {
-  const price = 500;
+  const price = 100;
   const [quantity, setQuantity] = React.useState(0);
   function addToCart() {
     setQuantity(quantity + 1);
