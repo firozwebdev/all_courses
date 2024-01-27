@@ -44,9 +44,7 @@ function maxsum(arr, B) {
 
 //console.log(maxsum([5, -2, 3, 1, 2], 3));
 
-function test(data) {
-  // Your code here
-  return data;
-}
-
-console.log(test("hello"));
+fetch("")
+ .then(response => response.json())
+ .then(data => )
+ .catch(error => console.error(error));
