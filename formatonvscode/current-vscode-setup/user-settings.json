@@ -1,0 +1,29 @@
+{
+  "workbench.iconTheme": "eq-material-theme-icons-light",
+  "editor.fontSize": 20,
+  "files.autoSave": "afterDelay",
+  "editor.mouseWheelZoom": true,
+  "workbench.colorTheme": "Learn with Sumit - Peace of the eye",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "eslint.run": "onSave",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "path-autocomplete.extensionOnImport": true,
+  "path-autocomplete.excludedItems": {
+    "*/.js": {
+      "when": "**"
+    },
+    "*/.jsx": {
+      "when": "**"
+    }
+  },
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false
+}

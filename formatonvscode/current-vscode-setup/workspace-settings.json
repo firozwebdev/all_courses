@@ -1,0 +1,39 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.validate.enable": false,
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "typescript.validate.enable": false,
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true,
+    "eslint.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.run": "onSave",
+    "eslint.options": {
+      "extensions": [".js", ".jsx", ".ts", ".tsx", ".vue"]
+    },
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "prettier.arrowParens": "always",
+    "prettier.jsxSingleQuote": true,
+    "prettier.useTabs": false,
+    "prettier.tabWidth": 2,
+    "prettier.printWidth": 100,
+    "prettier.proseWrap": "preserve",
+    "prettier.htmlWhitespaceSensitivity": "strict",
+    "prettier.bracketSpacing": true,
+    "prettier.endOfLine": "lf",
+    "prettier.ignorePath": ".prettierignore",
+    "prettier.ignore": ["**/node_modules/**", "**/bower_components/**"],
+    "prettier.requireConfig": false
+  }
