@@ -24,16 +24,17 @@
 //     }
 //     max  = sum;
    
-//     for(i = A.length-1, j = B-1; i > A.length - B, j >= 0; i--,j--){
-//         sum = sum - A[j] + A[i];
-//         max = Math.max(max,sum)
-//     }
+    for(i = A.length-1, j = B-1; i > A.length - B, j >= 0; i--,j--){
+        sum = sum - A[j] + A[i];
+        max = Math.max(max,sum)
+    }
 //     return max;
 
 // }
 
 function pickFromBothSide(A,B){
     let sum = 0;
+    let n = A.length;
         
         for(let i = 0; i < B; i++){
             sum += A[i]
@@ -41,7 +42,7 @@ function pickFromBothSide(A,B){
         
         max = sum;
         
-        for(let i = A.length-1; i < A.length - B; i--){
+        for(let i = n-1; i < n - B; i--){
             for(let j = B-1; j >= 0; j--){
                 sum = sum - A[j] + A[i];
                 max  = Math.max(max,sum)
