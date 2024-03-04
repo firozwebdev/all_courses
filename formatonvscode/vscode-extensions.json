@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "formulahendry.code-runner",
+    "onecentlin.laravel-blade",
+    "onecentlin.laravel-extension-pack",
+    "formulahendry.auto-close-tag",
+    "steoates.autoimport",
+    "formulahendry.auto-rename-tag",
+    "k--kato.intellij-idea-keybindings",
+    "onecentlin.laravel-extension-pack",
+    "equinusocio.vsc-material-theme",
+    "pkief.material-icon-theme",
+    "junstyle.php-cs-fixer",
+    "felixfbecker.php-intellisense",
+    "mehedidracula.php-namespace-resolver",
+    "bradlc.vscode-tailwindcss",
+    "bradlc.vscode-tailwindcss-fold-extension",
+    "jake-101/vscode-tailwindcss",
+    "jcbuisson.vue",
+    "octref.vetur"
+  ]
+}
