@@ -14,6 +14,7 @@ class DashboardController extends Controller
     public function test(Request $request)
     {
         $name = $request->input('name');
+        
         return view('test', ['name' => $name]);
     }
 }
