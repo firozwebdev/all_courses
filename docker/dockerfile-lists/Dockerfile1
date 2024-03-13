@@ -1,0 +1,15 @@
+FROM ubuntu:20.04
+
+# Set the timezone
+RUN DEBIAN_FRONTEND="noninteractive" TZ="Asia/Dhaka" apt-get update && apt-get -y install tzdata
+
+# Install Apache and PHP
+RUN apt-get update && \
+    apt-get install -y apache2 php libapache2-mod-php && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy your PHP files
+COPY ./index.php /var/www/html/
+
+# Start Apache service
+CMD ["apachectl", "-D", "FOREGROUND"]
